@@ -4,7 +4,26 @@
   
   
   <entry>
-    <title>[C++随笔：const、static、virtual]</title>
+    <title>[c++随笔]变量类型</title>
+    <link href="/2024/12/19/%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B/"/>
+    <url>/2024/12/19/%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B/</url>
+    
+    <content type="html"><![CDATA[<table><thead><tr><th>数据类型</th><th>32位</th><th>64位</th></tr></thead><tbody><tr><td>char</td><td>1（字节）</td><td>1</td></tr><tr><td>unsigned char</td><td>1</td><td>1</td></tr><tr><td>short</td><td>2</td><td>2</td></tr><tr><td>unsigned short</td><td>2</td><td>2</td></tr><tr><td>int</td><td>4</td><td>4</td></tr><tr><td>unsigned int</td><td>4</td><td>4</td></tr><tr><td>long</td><td>4</td><td>8</td></tr><tr><td>unsigned long</td><td>4</td><td>8</td></tr><tr><td>long long</td><td>8</td><td>8</td></tr><tr><td>指针</td><td>4</td><td>8</td></tr><tr><td>float</td><td>4</td><td>4</td></tr><tr><td>double</td><td>8</td><td>8</td></tr></tbody></table><p>重要且易混淆的sizeof：<br>sizeof()计算的是所占字节的大小，即上表中所列举出的数值。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> a[] = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;;<br><span class="hljs-type">int</span> b[<span class="hljs-number">4</span>];<br><span class="hljs-type">int</span> *c = b;<br><span class="hljs-comment">//sizeof对上面进行求值：</span><br><span class="hljs-built_in">sizeof</span>(a) = <span class="hljs-number">20</span> <span class="hljs-comment">//数组有五个元素，每个占4字节</span><br><span class="hljs-built_in">sizeof</span>(b[<span class="hljs-number">0</span>]) = <span class="hljs-number">4</span> <span class="hljs-comment">//一个int大小</span><br><span class="hljs-built_in">sizeof</span>(c) = <span class="hljs-number">4</span> <span class="hljs-comment">//c是指针</span><br></code></pre></td></tr></table></figure><p>注意，虽然我们平常总说数组名可以看作一个指针，但是这里sizeof(a)并不能这样来看，只有当数组名作传参时，才会被认为是指针，而sizeof()实际上是个运算符。数组传参时，均会退化为指向首元素地址：&amp;a[0]这样的指针。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">char</span> a[] = <span class="hljs-string">&quot;wone&quot;</span>;<br>a++;<span class="hljs-comment">//这样做会编译报错</span><br><span class="hljs-built_in">fun</span>(a);<span class="hljs-comment">//func(char ch[])&#123;ch++;&#125;此时通过一个函数进行a++就能正常编译，说明数组已经退化为指针了</span><br></code></pre></td></tr></table></figure><p>数组退化为指针之于代码的一些影响：很多时候我们遇到的一些接口会将数组还有数组长度一同作为参数传入，这为什么呢？明明只要有数组名，就可以通过sizeof(arr) &#x2F; sizeof(arr[0])来求得长度，为什么还要再浪费一个参数空间来传入一个可以计算出来的值？因为数组传参时，在函数内部退化为了指针，无法再用sizeof求得其长度。自己设计接口时也要注意这点。</p><p>数组与指针在传参时是等价的：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">test_point</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *arr)</span></span>&#123;<br>    <span class="hljs-keyword">while</span>(*arr != <span class="hljs-string">&#x27;\0&#x27;</span>)&#123;<br>        std::cout &lt;&lt; *arr &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>        arr++;<br>    &#125;<br>    std::cout &lt;&lt; std::endl;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">test_arr</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> arr[], <span class="hljs-type">int</span> arr_len)</span></span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i&lt;arr_len; i++)&#123;<br>        std::cout&lt;&lt;arr[i]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>    &#125;<br>    std::cout &lt;&lt; std::endl;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    &#123;<br>        <span class="hljs-comment">//将指针传入指针参数</span><br>        <span class="hljs-type">const</span> <span class="hljs-type">char</span>* str = <span class="hljs-string">&quot;Hello&quot;</span>;<br>        <span class="hljs-built_in">test_point</span>(str);<br>    &#125;<br>    &#123;<span class="hljs-comment">// 将数组传入指针参数</span><br>        <span class="hljs-type">char</span> str[] = <span class="hljs-string">&quot;Hello&quot;</span>;<br>        <span class="hljs-built_in">test_point</span>(str);<br>    &#125;<br>    &#123;<span class="hljs-comment">// 将指针传入数组参数</span><br>        <span class="hljs-type">const</span> <span class="hljs-type">char</span>* str = <span class="hljs-string">&quot;Hello&quot;</span>;<br>        <span class="hljs-built_in">test_arr</span>(str,<span class="hljs-number">6</span>);<br>    &#125;<br>    &#123;<br>        <span class="hljs-comment">//将数组传入数组参数</span><br>        <span class="hljs-type">char</span> str[] = <span class="hljs-string">&quot;Hello&quot;</span>;<br>        <span class="hljs-built_in">test_arr</span>(str,<span class="hljs-number">6</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>c++随笔</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[c++随笔]const、static、virtual</title>
     <link href="/2024/12/18/C-%E9%9A%8F%E7%AC%94%EF%BC%9Aconst%E3%80%81static%E3%80%81virtual/"/>
     <url>/2024/12/18/C-%E9%9A%8F%E7%AC%94%EF%BC%9Aconst%E3%80%81static%E3%80%81virtual/</url>
     
@@ -12,18 +31,11 @@
     
     
     
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="/2024/12/18/hello-world/"/>
-    <url>/2024/12/18/hello-world/</url>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
+    <tags>
+      
+      <tag>c++随笔</tag>
+      
+    </tags>
     
   </entry>
   
