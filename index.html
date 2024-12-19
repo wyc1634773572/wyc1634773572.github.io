@@ -227,15 +227,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/12/19/%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B/" target="_self">
-          [c++随笔]变量类型
+        <a href="/2024/12/19/virtual/" target="_self">
+          [C++基础]virtual
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/12/19/%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/12/19/virtual/" target="_self">
         <div>
-          数据类型 32位 64位    char 1（字节） 1   unsigned char 1 1   short 2 2   unsigned short 2 2   int 4 4   unsigned int 4 4   long 4 8   unsigned long 4 8   long long 8 8   指针 4 8   float 4 4   double 8 8   重要且
+          virtualvirtual用于修饰：成员函数（虚函数），继承方式（虚继承）  修饰成员函数   定义虚函数与纯虚函数，实现多态   父类指针指向子类对象，此时必须用到virtual来实现多态。父类中定义虚函数，在子类中对该函数进行重写，此时父类指针调用时则会根据具体指向的子类对象来调用相应函数。当然，如果子类没有重写父类虚函数，则任然调用父类虚函数。虚函数相当于为子类提供一个了缺省实现，而纯虚函
         </div>
       </a>
 
@@ -243,17 +243,40 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-12-19 00:51" pubdate>
+            <time datetime="2024-12-19 22:23" pubdate>
               2024-12-19
             </time>
           </div>
         
         
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C/" class="category-chain-item">C++</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/c-%E9%9A%8F%E7%AC%94/">#c++随笔</a>
+              <a href="/tags/static/">#static</a>
+            
+              <a href="/tags/virtual/">#virtual</a>
             
           </div>
         
@@ -267,15 +290,78 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/12/18/C-%E9%9A%8F%E7%AC%94%EF%BC%9Aconst%E3%80%81static%E3%80%81virtual/" target="_self">
-          [c++随笔]const、static、virtual
+        <a href="/2024/12/19/const/" target="_self">
+          [C++基础]const
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/12/18/C-%E9%9A%8F%E7%AC%94%EF%BC%9Aconst%E3%80%81static%E3%80%81virtual/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/12/19/const/" target="_self">
         <div>
-          Staticstatic用于控制存储方式以及可见性，总的来说他的修饰可分为两大类普通修饰：局部变量、全局变量、函数成员修饰：成员变量、成员函数 1.修饰局部变量。&ensp;&ensp;我们知道局部变量的生命周期就在其所定义的那个局部范围内，如某个函数，某个循环，一旦走出这个范围局部变量将自动释放。static修饰局部变量时，将改变变量的生命周期，实际上就是将其存储区域由原来的栈区移至静态区，使其
+          constconst修饰分为：修饰指针，修饰参数，修饰成员函数  修饰指针这种情况一般要注意的是常量指针与指针常量：   常量指针，本质是个指针，指向一个常量：const int * a   ——–&gt;  const  (int *a)  修饰的是 *a 即a指针指向地址中的内容&#x2F;值不可变      指针常量，本质是个常量：int * const a   ——–&gt;  (int
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-12-19 22:23" pubdate>
+              2024-12-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C/" class="category-chain-item">C++</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/const/">#const</a>
+            
+              <a href="/tags/%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/">#参数传递</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/12/18/static/" target="_self">
+          [C++基础]static
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/12/18/static/" target="_self">
+        <div>
+          Staticstatic用于控制存储方式以及可见性，总的来说他的修饰可分为两大类普通修饰：局部变量、全局变量、函数成员修饰：成员变量、成员函数    修饰局部变量。   我们知道局部变量的生命周期就在其所定义的那个局部范围内，如某个函数，某个循环，一旦走出这个范围局部变量将自动释放。static修饰局部变量时，将改变变量的生命周期，实际上就是将其存储区域由原来的栈区移至静态区，使其生命周期与程序一
         </div>
       </a>
 
@@ -289,11 +375,34 @@
           </div>
         
         
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/C/" class="category-chain-item">C++</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/c-%E9%9A%8F%E7%AC%94/">#c++随笔</a>
+              <a href="/tags/const/">#const</a>
+            
+              <a href="/tags/static/">#static</a>
             
           </div>
         
