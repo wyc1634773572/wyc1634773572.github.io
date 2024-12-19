@@ -19,23 +19,21 @@
   <meta name="author" content="混沌的麻瓜">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Staticstatic用于控制存储方式以及可见性，总的来说他的修饰可分为两大类普通修饰：局部变量、全局变量、函数成员修饰：成员变量、成员函数    修饰局部变量。   我们知道局部变量的生命周期就在其所定义的那个局部范围内，如某个函数，某个循环，一旦走出这个范围局部变量将自动释放。static修饰局部变量时，将改变变量的生命周期，实际上就是将其存储区域由原来的栈区移至静态区，使其生命周期与程序一">
+    <meta name="description" content="封装对类的封装，将类成员变量私有化，提供公共的接口以访问成员变量，避免了外部函数直接访问，以达到封装的目的。允许任何类或外部函数直接访问的设为 public允许子类访问的设为 protected只允许本类访问的设为 private   protected与private单从一个类来看几乎没有区别，他们均不能被直接调用，而是要通过公共接口来访问。他们的明显区别要放到继承中才能得以体现，protect">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[C++基础]static">
-<meta property="og:url" content="http://example.com/2024/12/18/static/index.html">
+<meta property="og:title" content="[C++基础]面向对象三大特性">
+<meta property="og:url" content="http://example.com/2024/12/19/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Staticstatic用于控制存储方式以及可见性，总的来说他的修饰可分为两大类普通修饰：局部变量、全局变量、函数成员修饰：成员变量、成员函数    修饰局部变量。   我们知道局部变量的生命周期就在其所定义的那个局部范围内，如某个函数，某个循环，一旦走出这个范围局部变量将自动释放。static修饰局部变量时，将改变变量的生命周期，实际上就是将其存储区域由原来的栈区移至静态区，使其生命周期与程序一">
+<meta property="og:description" content="封装对类的封装，将类成员变量私有化，提供公共的接口以访问成员变量，避免了外部函数直接访问，以达到封装的目的。允许任何类或外部函数直接访问的设为 public允许子类访问的设为 protected只允许本类访问的设为 private   protected与private单从一个类来看几乎没有区别，他们均不能被直接调用，而是要通过公共接口来访问。他们的明显区别要放到继承中才能得以体现，protect">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-12-18T15:05:21.000Z">
-<meta property="article:modified_time" content="2024-12-19T14:40:42.307Z">
+<meta property="article:published_time" content="2024-12-19T15:29:30.000Z">
+<meta property="article:modified_time" content="2024-12-19T15:45:59.570Z">
 <meta property="article:author" content="混沌的麻瓜">
-<meta property="article:tag" content="const">
-<meta property="article:tag" content="static">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>[C++基础]static - Hexo</title>
+  <title>[C++基础]面向对象三大特性 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[C++基础]static"></span>
+            <span id="subtitle" data-typed-text="[C++基础]面向对象三大特性"></span>
           
         </div>
 
@@ -212,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-18 23:05" pubdate>
-          2024年12月18日 晚上
+        <time datetime="2024-12-19 23:29" pubdate>
+          2024年12月19日 晚上
         </time>
       </span>
     
@@ -224,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          906 字
+          936 字
         
       </span>
     
@@ -272,54 +270,52 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[C++基础]static</h1>
+            <h1 id="seo-header">[C++基础]面向对象三大特性</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Static"><a href="#Static" class="headerlink" title="Static"></a>Static</h1><p>static用于控制存储方式以及可见性，总的来说他的修饰可分为两大类<br><strong>普通修饰：局部变量、全局变量、函数</strong><br><strong>成员修饰：成员变量、成员函数</strong>  </p>
-<ol>
-<li><font size=3 color=yellow>修饰局部变量。</font></li>
-</ol>
-<ul>
-<li>我们知道局部变量的生命周期就在其所定义的那个局部范围内，如某个函数，某个循环，一旦走出这个范围局部变量将自动释放。static修饰局部变量时，将改变变量的生命周期，实际上就是将其存储区域由原来的栈区移至静态区，使其<strong>生命周期与程序一样长</strong>。但是，它的<strong>作用域并没有被改变</strong>，任然只能在局部的方位内使用。</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">func</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-type">static</span> <span class="hljs-type">int</span> a = <span class="hljs-number">0</span>;<br>	a++;<br>	cout&lt;&lt;a&lt;&lt;endl;<br>&#125;<br>调用两次func,得到的结果分别是<span class="hljs-number">1</span>、<span class="hljs-number">2</span>。说明出了作用域之后a的生命周期并没有结束<br></code></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><font size=3 color=yellow>修饰全局变量与函数</font></li>
-</ol>
-<ul>
-<li>static修饰全局变量与函数呈现的效果是一样的，即<strong>改变了修饰对象的作用域</strong>（由整个程序到当前文件），只能在定义它的源文件内使用。</li>
-</ul>
-<ol start="3">
-<li><font size=3 color=yellow>修饰成员变量  </font></li>
-</ol>
-<ul>
-<li><p>静态成员变量由于存储在静态区,在程序开始时就必须存在，因而有不能在类中定义，只初始化一次（默认为0）等特点。  </p>
-</li>
-<li><p>因为存储在静态区内，<strong>相当于一个全局变量</strong>，为所有类对象共有(相当于实现了类对象的数据共享)，但并没有包含在具体的类对象中，<font color=red>因此多添加一个静态成员不会影响sizeof()对类对象的计算值大小。</font>  </p>
-</li>
-<li><p>static修饰成员变量，必须初始化，必须在类外初始化，且不能再加static</p>
-</li>
-<li><p>访问方式：类名：：静态成员变量名、类对象名 . 静态成员变量名</p>
-</li>
-</ul>
-<ol start="4">
-<li><font size=3 color=yellow>修饰成员函数</font></li>
-</ol>
-<ul>
-<li>静态成员函数不能访问非静态成员.也不能被const修饰  <ul>
-<li><p>为什么静态成员函数只能访问静态成员?<br>因为<font color=red><strong>静态成员函数没有this指针</strong></font>,试想,一个成员函数是通过this指针来确定当前类对象的,这样才能找到类对象中的成员.可是如果没有这个指针,函数就找不到这些普通成员,也就无从调用了。  </p>
-</li>
-<li><p>那么为什么会没有this指针呢?我们从内存上来想想,因为static将成员存储在了静态区,在类加载时就会分配内存,这个过程在类对象创建之前,this是指向类对象的那么其创建过程也应该在这之后,所以静态函数存在时是没有this指针的。当然简单点来说，**<font color=red>静态成员是属于类而不是专属某个类对象的</font>**，因此不该拥有this来将它的作用范围限定在类对象中。  </p>
-</li>
-<li><p>通过上面的解释也能很好理解了，为什么静态成员函数不能被const修饰，以及为什么非静态成员函数能调用静态成员。const修饰成员函数的实质其实是修饰函数的隐藏参数this,准确来说是A * const this,既然静态成员函数没有this,也就没有办法用const修饰了。而静态成员函数被所有类对象共享,那么类对象的非静态成员函数自然能调用静态成员。请注意理解“不属于类对象，但被类对象所共享”。</p>
-</li>
-</ul>
-</li>
-</ul>
-
+                <h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><p>对类的封装，将类成员变量私有化，提供公共的接口以访问成员变量，避免了外部函数直接访问，以达到封装的目的。<br>允许任何类或外部函数直接访问的设为 public<br>允许子类访问的设为 protected<br>只允许本类访问的设为 private  </p>
+<p>protected与private单从一个类来看几乎没有区别，他们均不能被直接调用，而是要通过公共接口来访问。他们的明显区别要放到继承中才能得以体现，protected能被子类的公共接口直接调用，private不能被子类公共接口直接访问（除非子类接口调用了父类可访问该私有成员的公共接口）。  </p>
+<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><p><font color=red>继承是一个普遍到特殊的过程</font><br>因为子类会在父类原有功能的基础上进行扩展，不同的子类在保持了父类的一些相同特性后又会根据需要衍生出其他子类所没有的内容，因此父类看作是一个共性的集合体，而子类则是该集合体的一种特殊分支。  </p>
+<p>以鸟类来举例，所有鸟类都具有相同的鸟类特征因此才会被归为鸟，而不同的鸟种又有不同的特点，如啄木鸟的特点是能啄木，企鹅的特点是不会飞等，这时鸟类作为父类，而啄木鸟企鹅等则是为子类。</p>
+<p>类的继承有三种方式：共有继承，私有继承以及保护继承</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span> : <span class="hljs-keyword">public</span> B<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span> : <span class="hljs-keyword">private</span> B<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span> : <span class="hljs-keyword">protected</span> B<br></code></pre></td></tr></table></figure>
+<p>下面这张表将展示三种继承后，父类的成员访问属性将发生何种变化：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>父类 pubilc</th>
+<th>父类 protected</th>
+<th>父类 private</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>公有继承</td>
+<td>子类 public</td>
+<td>子类 protected</td>
+<td>父类 private</td>
+</tr>
+<tr>
+<td>保护继承</td>
+<td>子类 protected</td>
+<td>子类 protected</td>
+<td>父类 private</td>
+</tr>
+<tr>
+<td>私有继承</td>
+<td>子类 private</td>
+<td>子类 private</td>
+<td>父类 private</td>
+</tr>
+</tbody></table>
+<p>注意上述父类private，不管哪种继承，父类私有始终是父类的私有，子类无法直接访问，需调用父类公有函数才能访问。而protected会变成子类的成员，此时子类的公有函数也能访问他了。这里就是封装中我们提到的二者的差别。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Base</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-type">int</span> Base_pub = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">protected</span>:<br>	<span class="hljs-type">int</span> Base_pro = <span class="hljs-number">2</span>;<br><span class="hljs-keyword">private</span>:<br>	<span class="hljs-type">int</span> Base_pri = <span class="hljs-number">3</span>;<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-built_in">show_Base_pub</span>()&#123;cout &lt;&lt; Base_pub;&#125;;<br>	<span class="hljs-built_in">show_Base_pro</span>()&#123;cout &lt;&lt; Base_pro;&#125;;<br>	<span class="hljs-built_in">show_Base_pri</span>()&#123;cout &lt;&lt; Base_pri;&#125;;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Child</span> : <span class="hljs-keyword">public</span> Base<br>&#123;<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-built_in">show_Child_pub</span>()&#123;cout &lt;&lt; Base_pub&#125;;		<span class="hljs-comment">//合法</span><br>	<span class="hljs-built_in">show_Child_pro</span>()&#123;cout &lt;&lt; Base_pro&#125;;		<span class="hljs-comment">//合法，Base_pro以及为子类的保护成员</span><br>	<span class="hljs-built_in">show_Child_pri</span>()&#123;cout &lt;&lt; Base_pri&#125;;		<span class="hljs-comment">//非法，Base_pri仍然是父类私有属性</span><br>	<span class="hljs-built_in">show_Child_pri</span>()&#123;<span class="hljs-built_in">show_Base_pri</span>()&#125;;		<span class="hljs-comment">//修改，调用父类公有函数，合法</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>子类在创建以及销毁时，调用构造与析构的顺序严格如下：<br>父类构造—–》子类构造—–》子类析构—–》父类析构  </p>
+<h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1><p>多态也分静态多态以及动态多态；静态多态以重载和模板来实现，动态多态以虚函数方式来实现，当然这里最重要的无疑是动态多态，以下只讨论这种动态的方式。</p>
+<p>C++多态的实现需要满足两个条件：<br>1.父类指针指向子类对象<br>2.调用的函数为虚函数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp">Base *base = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Child</span>();<br>base-&gt;<span class="hljs-built_in">virtual_fun</span>()		<span class="hljs-comment">//此时调用的是子类的对应虚函数</span><br><br><span class="hljs-comment">//C++支持这种父类指针指向子类对象的操作，最常见的用法如下：</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">func</span><span class="hljs-params">(Base * b)</span></span>&#123; <span class="hljs-comment">/*函数体*/</span> &#125;<br>Child c;<br><span class="hljs-built_in">func</span>(&amp;c);<br><br><span class="hljs-comment">//上面这种写法更好地向初学者展示了何为多态，即我们通过一个写定的func接口，传入不同的对象参数就能做到不一样的处理逻辑了。很多设计模式都是采用这种写法完成多态的。</span><br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -349,15 +345,6 @@
     </div>
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/const/" class="print-no-link">#const</a>
-      
-        <a href="/tags/static/" class="print-no-link">#static</a>
-      
-    </div>
-  
 </div>
 
 
@@ -366,8 +353,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[C++基础]static</div>
-      <div>http://example.com/2024/12/18/static/</div>
+      <div>[C++基础]面向对象三大特性</div>
+      <div>http://example.com/2024/12/19/面向对象三大特性/</div>
     </div>
     <div class="license-meta">
       
@@ -379,7 +366,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年12月18日</div>
+          <div>2024年12月19日</div>
         </div>
       
       
@@ -411,15 +398,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/12/19/const/" title="[C++基础]const">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">[C++基础]const</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2024/12/19/virtual/" title="[C++基础]virtual">
+                        <span class="hidden-mobile">[C++基础]virtual</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
