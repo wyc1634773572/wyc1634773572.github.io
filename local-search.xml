@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>git</title>
+    <link href="/2024/12/21/git/"/>
+    <url>/2024/12/21/git/</url>
+    
+    <content type="html"><![CDATA[<h1 id="git"><a href="#git" class="headerlink" title="git"></a>git</h1><h2 id="参与已有项目-加入新工作"><a href="#参与已有项目-加入新工作" class="headerlink" title="参与已有项目(加入新工作)"></a>参与已有项目(加入新工作)</h2><p>初始化新的仓库<br><font color=yellow>git init</font></p><p>克隆远端仓库到本地<br><font color=yellow>git clone + &lt;ssh&#x2F;https&gt;</font>  </p><p>拉取到最新更改<br><font color=yellow>git pull</font></p><p>创建新的本地分支并切换过去(一般要避免直接修改main&#x2F;master分支，即基线)<br><font color=yellow>git checkout -b branch</font>  </p><p>代码更改完毕，加入暂存区<br><font color=yellow>git add  &lt;file&gt;</font></p><p>提交更改,添加提交信息<br><font color=yellow>git commit -s&#x2F;-m</font>  </p><p>推送branch分支的更改到远端仓库，此时远端仓库也会生成一个同名branch分支接收更改<br>这里的&lt;remote&gt;一般默认是origin，即指远端仓库<br><font color=yellow>git push -u &lt;remote&gt; branch</font></p><h2 id="其他常用命令"><a href="#其他常用命令" class="headerlink" title="其他常用命令"></a>其他常用命令</h2><p>查看提交历史<br><font color=yellow>git log</font>  </p><p>查看工作目录和暂存区状态<br><font color=yellow>git status</font></p><p>列出所有&#x2F;远端分支<br><font color=yellow>git branch -a&#x2F;-r</font></p><p>删除本地分支<br><font color=yellow>git branch -d &lt;local_branch&gt;</font></p><p>切换本地分支<br><font color=yellow>git checkout &lt;local_branch&gt;</font></p><p>查看本地分支与远端关联的情况<br><font color=yellow>git branch -vv</font></p><p>重置暂存区到上一个提交<br><font color=yellow>git reset  –soft&#x2F;–hard &lt;commit-id&gt;</font></p><p>查看提交具体更改<br><font color=yellow>git show &lt;commit-id&gt;</font></p><p>添加一个新的远程仓库，将其命名为 &lt;remote&gt;<br><font color=yellow>git remote add &lt;remote&gt; &lt;ssh&#x2F;https&gt;</font></p><p>查看远端仓库配置(即关联的远端仓库名和url地址等)<br><font color=yellow>git remote -v</font></p><p>查看远端仓库与本地仓库间的对应关系<br><font color=yellow>git remote show &lt;remote&gt;</font></p><h2 id="一些场景记录"><a href="#一些场景记录" class="headerlink" title="一些场景记录"></a>一些场景记录</h2><ol><li><p>远端分支已经被删除，本地git branch -r 还是能看到<br>git remote show origin  可以看到远端仓库中被删除的分支状态为： stale(use ‘git remote prune’ to remove)<br>使用git remote prune origin 即可清理掉这些分支</p></li><li><p>新建了一个远端仓库，但不用clone方式来创建本地仓库  </p><ul><li><p>初始化：<br><font color=yellow>git init</font>  </p></li><li><p>完成第一笔提交：<br><font color=yellow>git add .</font><br><font color=yellow>git commit</font>  </p></li><li><p>添加远端仓库：<br><font color=yellow>git remote add origin &lt;ssh&#x2F;https&gt;</font>  </p></li><li><p>推送更新+关联主分支<br>如果本地主分支名字与加入的远端仓库主分支不同，则还需要改名：<br><font color=yellow>git push -u origin master</font></p></li></ul></li></ol><h2 id="Q-A"><a href="#Q-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><ul><li>git push 命令有无-u选项的区别是什么？<br>基本的推送指令是需要指定源分支与目标分支的：git push origin  &lt;local_branch&gt; : &lt;remote_branch&gt;<br>-u选项是设置上游分支，即指定local分支与remote分支关联，以后直接使用git push 命令就能更新到远程。当没有指定remote分支时，会在远端自动生成一条很local分支同名的分支来进行关联。而指定了remote却没指定local时，指的是将本地空分支推到远端，起到的效果是<font color=red>删除了对应的远端分支。</font></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Tool</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>git</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[C++基础]面向对象三大特性</title>
     <link href="/2024/12/19/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7/"/>
     <url>/2024/12/19/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7/</url>

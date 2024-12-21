@@ -19,21 +19,22 @@
   <meta name="author" content="混沌的麻瓜">
   <meta name="keywords" content="">
   
-    <meta name="description" content="封装对类的封装，将类成员变量私有化，提供公共的接口以访问成员变量，避免了外部函数直接访问，以达到封装的目的。允许任何类或外部函数直接访问的设为 public允许子类访问的设为 protected只允许本类访问的设为 private   protected与private单从一个类来看几乎没有区别，他们均不能被直接调用，而是要通过公共接口来访问。他们的明显区别要放到继承中才能得以体现，protect">
+    <meta name="description" content="git参与已有项目(加入新工作)初始化新的仓库git init 克隆远端仓库到本地git clone + &lt;ssh&#x2F;https&gt;   拉取到最新更改git pull 创建新的本地分支并切换过去(一般要避免直接修改main&#x2F;master分支，即基线)git checkout -b branch   代码更改完毕，加入暂存区git add  &lt;file&gt; 提">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[C++基础]面向对象三大特性">
-<meta property="og:url" content="http://example.com/2024/12/19/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7/index.html">
+<meta property="og:title" content="git">
+<meta property="og:url" content="http://example.com/2024/12/21/git/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="封装对类的封装，将类成员变量私有化，提供公共的接口以访问成员变量，避免了外部函数直接访问，以达到封装的目的。允许任何类或外部函数直接访问的设为 public允许子类访问的设为 protected只允许本类访问的设为 private   protected与private单从一个类来看几乎没有区别，他们均不能被直接调用，而是要通过公共接口来访问。他们的明显区别要放到继承中才能得以体现，protect">
+<meta property="og:description" content="git参与已有项目(加入新工作)初始化新的仓库git init 克隆远端仓库到本地git clone + &lt;ssh&#x2F;https&gt;   拉取到最新更改git pull 创建新的本地分支并切换过去(一般要避免直接修改main&#x2F;master分支，即基线)git checkout -b branch   代码更改完毕，加入暂存区git add  &lt;file&gt; 提">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-12-19T15:29:30.000Z">
-<meta property="article:modified_time" content="2024-12-19T15:45:59.570Z">
+<meta property="article:published_time" content="2024-12-21T02:53:45.000Z">
+<meta property="article:modified_time" content="2024-12-21T03:00:01.961Z">
 <meta property="article:author" content="混沌的麻瓜">
+<meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>[C++基础]面向对象三大特性 - Hexo</title>
+  <title>git - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[C++基础]面向对象三大特性"></span>
+            <span id="subtitle" data-typed-text="git"></span>
           
         </div>
 
@@ -210,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-19 23:29" pubdate>
-          2024年12月19日 晚上
+        <time datetime="2024-12-21 10:53" pubdate>
+          2024年12月21日 上午
         </time>
       </span>
     
@@ -222,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          936 字
+          631 字
         
       </span>
     
@@ -233,7 +234,7 @@
         
         
         
-          8 分钟
+          6 分钟
         
       </span>
     
@@ -270,52 +271,49 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[C++基础]面向对象三大特性</h1>
+            <h1 id="seo-header">git</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><p>对类的封装，将类成员变量私有化，提供公共的接口以访问成员变量，避免了外部函数直接访问，以达到封装的目的。<br>允许任何类或外部函数直接访问的设为 public<br>允许子类访问的设为 protected<br>只允许本类访问的设为 private  </p>
-<p>protected与private单从一个类来看几乎没有区别，他们均不能被直接调用，而是要通过公共接口来访问。他们的明显区别要放到继承中才能得以体现，protected能被子类的公共接口直接调用，private不能被子类公共接口直接访问（除非子类接口调用了父类可访问该私有成员的公共接口）。  </p>
-<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><p><font color=red>继承是一个普遍到特殊的过程</font><br>因为子类会在父类原有功能的基础上进行扩展，不同的子类在保持了父类的一些相同特性后又会根据需要衍生出其他子类所没有的内容，因此父类看作是一个共性的集合体，而子类则是该集合体的一种特殊分支。  </p>
-<p>以鸟类来举例，所有鸟类都具有相同的鸟类特征因此才会被归为鸟，而不同的鸟种又有不同的特点，如啄木鸟的特点是能啄木，企鹅的特点是不会飞等，这时鸟类作为父类，而啄木鸟企鹅等则是为子类。</p>
-<p>类的继承有三种方式：共有继承，私有继承以及保护继承</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span> : <span class="hljs-keyword">public</span> B<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span> : <span class="hljs-keyword">private</span> B<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span> : <span class="hljs-keyword">protected</span> B<br></code></pre></td></tr></table></figure>
-<p>下面这张表将展示三种继承后，父类的成员访问属性将发生何种变化：</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>父类 pubilc</th>
-<th>父类 protected</th>
-<th>父类 private</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>公有继承</td>
-<td>子类 public</td>
-<td>子类 protected</td>
-<td>父类 private</td>
-</tr>
-<tr>
-<td>保护继承</td>
-<td>子类 protected</td>
-<td>子类 protected</td>
-<td>父类 private</td>
-</tr>
-<tr>
-<td>私有继承</td>
-<td>子类 private</td>
-<td>子类 private</td>
-<td>父类 private</td>
-</tr>
-</tbody></table>
-<p>注意上述父类private，不管哪种继承，父类私有始终是父类的私有，子类无法直接访问，需调用父类公有函数才能访问。而protected会变成子类的成员，此时子类的公有函数也能访问他了。这里就是封装中我们提到的二者的差别。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Base</span><br>&#123;<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-type">int</span> Base_pub = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">protected</span>:<br>	<span class="hljs-type">int</span> Base_pro = <span class="hljs-number">2</span>;<br><span class="hljs-keyword">private</span>:<br>	<span class="hljs-type">int</span> Base_pri = <span class="hljs-number">3</span>;<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-built_in">show_Base_pub</span>()&#123;cout &lt;&lt; Base_pub;&#125;;<br>	<span class="hljs-built_in">show_Base_pro</span>()&#123;cout &lt;&lt; Base_pro;&#125;;<br>	<span class="hljs-built_in">show_Base_pri</span>()&#123;cout &lt;&lt; Base_pri;&#125;;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Child</span> : <span class="hljs-keyword">public</span> Base<br>&#123;<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-built_in">show_Child_pub</span>()&#123;cout &lt;&lt; Base_pub&#125;;		<span class="hljs-comment">//合法</span><br>	<span class="hljs-built_in">show_Child_pro</span>()&#123;cout &lt;&lt; Base_pro&#125;;		<span class="hljs-comment">//合法，Base_pro以及为子类的保护成员</span><br>	<span class="hljs-built_in">show_Child_pri</span>()&#123;cout &lt;&lt; Base_pri&#125;;		<span class="hljs-comment">//非法，Base_pri仍然是父类私有属性</span><br>	<span class="hljs-built_in">show_Child_pri</span>()&#123;<span class="hljs-built_in">show_Base_pri</span>()&#125;;		<span class="hljs-comment">//修改，调用父类公有函数，合法</span><br>&#125;<br></code></pre></td></tr></table></figure>
-<p>子类在创建以及销毁时，调用构造与析构的顺序严格如下：<br>父类构造—–》子类构造—–》子类析构—–》父类析构  </p>
-<h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1><p>多态也分静态多态以及动态多态；静态多态以重载和模板来实现，动态多态以虚函数方式来实现，当然这里最重要的无疑是动态多态，以下只讨论这种动态的方式。</p>
-<p>C++多态的实现需要满足两个条件：<br>1.父类指针指向子类对象<br>2.调用的函数为虚函数</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp">Base *base = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Child</span>();<br>base-&gt;<span class="hljs-built_in">virtual_fun</span>()		<span class="hljs-comment">//此时调用的是子类的对应虚函数</span><br><br><span class="hljs-comment">//C++支持这种父类指针指向子类对象的操作，最常见的用法如下：</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">func</span><span class="hljs-params">(Base * b)</span></span>&#123; <span class="hljs-comment">/*函数体*/</span> &#125;<br>Child c;<br><span class="hljs-built_in">func</span>(&amp;c);<br><br><span class="hljs-comment">//上面这种写法更好地向初学者展示了何为多态，即我们通过一个写定的func接口，传入不同的对象参数就能做到不一样的处理逻辑了。很多设计模式都是采用这种写法完成多态的。</span><br></code></pre></td></tr></table></figure>
+                <h1 id="git"><a href="#git" class="headerlink" title="git"></a>git</h1><h2 id="参与已有项目-加入新工作"><a href="#参与已有项目-加入新工作" class="headerlink" title="参与已有项目(加入新工作)"></a>参与已有项目(加入新工作)</h2><p>初始化新的仓库<br><font color=yellow>git init</font></p>
+<p>克隆远端仓库到本地<br><font color=yellow>git clone + &lt;ssh&#x2F;https&gt;</font>  </p>
+<p>拉取到最新更改<br><font color=yellow>git pull</font></p>
+<p>创建新的本地分支并切换过去(一般要避免直接修改main&#x2F;master分支，即基线)<br><font color=yellow>git checkout -b branch</font>  </p>
+<p>代码更改完毕，加入暂存区<br><font color=yellow>git add  &lt;file&gt;</font></p>
+<p>提交更改,添加提交信息<br><font color=yellow>git commit -s&#x2F;-m</font>  </p>
+<p>推送branch分支的更改到远端仓库，此时远端仓库也会生成一个同名branch分支接收更改<br>这里的&lt;remote&gt;一般默认是origin，即指远端仓库<br><font color=yellow>git push -u &lt;remote&gt; branch</font></p>
+<h2 id="其他常用命令"><a href="#其他常用命令" class="headerlink" title="其他常用命令"></a>其他常用命令</h2><p>查看提交历史<br><font color=yellow>git log</font>  </p>
+<p>查看工作目录和暂存区状态<br><font color=yellow>git status</font></p>
+<p>列出所有&#x2F;远端分支<br><font color=yellow>git branch -a&#x2F;-r</font></p>
+<p>删除本地分支<br><font color=yellow>git branch -d &lt;local_branch&gt;</font></p>
+<p>切换本地分支<br><font color=yellow>git checkout &lt;local_branch&gt;</font></p>
+<p>查看本地分支与远端关联的情况<br><font color=yellow>git branch -vv</font></p>
+<p>重置暂存区到上一个提交<br><font color=yellow>git reset  –soft&#x2F;–hard &lt;commit-id&gt;</font></p>
+<p>查看提交具体更改<br><font color=yellow>git show &lt;commit-id&gt;</font></p>
+<p>添加一个新的远程仓库，将其命名为 &lt;remote&gt;<br><font color=yellow>git remote add &lt;remote&gt; &lt;ssh&#x2F;https&gt;</font></p>
+<p>查看远端仓库配置(即关联的远端仓库名和url地址等)<br><font color=yellow>git remote -v</font></p>
+<p>查看远端仓库与本地仓库间的对应关系<br><font color=yellow>git remote show &lt;remote&gt;</font></p>
+<h2 id="一些场景记录"><a href="#一些场景记录" class="headerlink" title="一些场景记录"></a>一些场景记录</h2><ol>
+<li><p>远端分支已经被删除，本地git branch -r 还是能看到<br>git remote show origin  可以看到远端仓库中被删除的分支状态为： stale(use ‘git remote prune’ to remove)<br>使用git remote prune origin 即可清理掉这些分支</p>
+</li>
+<li><p>新建了一个远端仓库，但不用clone方式来创建本地仓库  </p>
+<ul>
+<li><p>初始化：<br><font color=yellow>git init</font>  </p>
+</li>
+<li><p>完成第一笔提交：<br><font color=yellow>git add .</font><br><font color=yellow>git commit</font>  </p>
+</li>
+<li><p>添加远端仓库：<br><font color=yellow>git remote add origin &lt;ssh&#x2F;https&gt;</font>  </p>
+</li>
+<li><p>推送更新+关联主分支<br>如果本地主分支名字与加入的远端仓库主分支不同，则还需要改名：<br><font color=yellow>git push -u origin master</font></p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="Q-A"><a href="#Q-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><ul>
+<li>git push 命令有无-u选项的区别是什么？<br>基本的推送指令是需要指定源分支与目标分支的：git push origin  &lt;local_branch&gt; : &lt;remote_branch&gt;<br>-u选项是设置上游分支，即指定local分支与remote分支关联，以后直接使用git push 命令就能更新到远程。当没有指定remote分支时，会在远端自动生成一条很local分支同名的分支来进行关联。而指定了remote却没指定local时，指的是将本地空分支推到远端，起到的效果是<font color=red>删除了对应的远端分支。</font></li>
+</ul>
+
                 
               </div>
             
@@ -333,7 +331,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/C/" class="category-chain-item">C++</a>
+  <a href="/categories/Tool/" class="category-chain-item">Tool</a>
   
   
 
@@ -345,6 +343,13 @@
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/git/" class="print-no-link">#git</a>
+      
+    </div>
+  
 </div>
 
 
@@ -353,8 +358,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[C++基础]面向对象三大特性</div>
-      <div>http://example.com/2024/12/19/面向对象三大特性/</div>
+      <div>git</div>
+      <div>http://example.com/2024/12/21/git/</div>
     </div>
     <div class="license-meta">
       
@@ -366,7 +371,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年12月19日</div>
+          <div>2024年12月21日</div>
         </div>
       
       
@@ -398,18 +403,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/12/21/git/" title="git">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">git</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/19/virtual/" title="[C++基础]virtual">
-                        <span class="hidden-mobile">[C++基础]virtual</span>
+                      <a href="/2024/12/19/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7/" title="[C++基础]面向对象三大特性">
+                        <span class="hidden-mobile">[C++基础]面向对象三大特性</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
