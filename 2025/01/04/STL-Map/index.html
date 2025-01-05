@@ -19,22 +19,23 @@
   <meta name="author" content="WONE">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目描述给你一个字符串data，它的格式为 yyyy-mm-dd, 表示一个公历日期。date 可以重写为二进制表示，只需要将年、月、日分别转换为对应的二进制表示 (不带前导零) 并遵循year-mount-day的格式。返回date的二进制表示。 示例输入： date &#x3D; “2080-02-29”输出： date &#x3D; “100000100000-10-11101”   输入：">
+    <meta name="description" content="基本概念 map是关联容器,关联容器中的元素是通过题目的键引用的，而不是通过他们在容器中的绝对位置引用的。即使用键key来索引，值value才是真正存储的数据。    map容器存储的都是piar对象，也就是用pair类模板创建的键值对，使用map容器存储的键的值既不能重复也不能被修改，更确切地说map中所存储的其实是pair&lt;const K, V&gt;， 同时也会根据键的值对所有键值对进">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[刷题]将日期转换为二进制">
-<meta property="og:url" content="http://example.com/2025/01/01/%E5%B0%86%E6%97%A5%E6%9C%9F%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E8%BF%9B%E5%88%B6/index.html">
+<meta property="og:title" content="[STL]Map">
+<meta property="og:url" content="http://example.com/2025/01/04/STL-Map/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目描述给你一个字符串data，它的格式为 yyyy-mm-dd, 表示一个公历日期。date 可以重写为二进制表示，只需要将年、月、日分别转换为对应的二进制表示 (不带前导零) 并遵循year-mount-day的格式。返回date的二进制表示。 示例输入： date &#x3D; “2080-02-29”输出： date &#x3D; “100000100000-10-11101”   输入：">
+<meta property="og:description" content="基本概念 map是关联容器,关联容器中的元素是通过题目的键引用的，而不是通过他们在容器中的绝对位置引用的。即使用键key来索引，值value才是真正存储的数据。    map容器存储的都是piar对象，也就是用pair类模板创建的键值对，使用map容器存储的键的值既不能重复也不能被修改，更确切地说map中所存储的其实是pair&lt;const K, V&gt;， 同时也会根据键的值对所有键值对进">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-01T12:18:09.000Z">
-<meta property="article:modified_time" content="2025-01-02T16:27:51.830Z">
+<meta property="article:published_time" content="2025-01-04T13:48:25.000Z">
+<meta property="article:modified_time" content="2025-01-05T14:38:57.084Z">
 <meta property="article:author" content="WONE">
-<meta property="article:tag" content="模拟">
+<meta property="article:tag" content="STL">
+<meta property="article:tag" content="map">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>[刷题]将日期转换为二进制 - Hexo</title>
+  <title>[STL]Map - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[刷题]将日期转换为二进制"></span>
+            <span id="subtitle" data-typed-text="[STL]Map"></span>
           
         </div>
 
@@ -211,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-01 20:18" pubdate>
-          2025年1月1日 晚上
+        <time datetime="2025-01-04 21:48" pubdate>
+          2025年1月4日 晚上
         </time>
       </span>
     
@@ -223,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          356 字
+          869 字
         
       </span>
     
@@ -234,7 +235,7 @@
         
         
         
-          3 分钟
+          8 分钟
         
       </span>
     
@@ -271,26 +272,84 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[刷题]将日期转换为二进制</h1>
+            <h1 id="seo-header">[STL]Map</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给你一个字符串data，它的格式为 yyyy-mm-dd, 表示一个公历日期。<br>date 可以重写为二进制表示，只需要将年、月、日分别转换为对应的二进制表示 (不带前导零) 并遵循year-mount-day的格式。<br>返回date的二进制表示。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>输入： date &#x3D; “2080-02-29”<br>输出： date &#x3D; “100000100000-10-11101”  </p>
-<p>输入： date &#x3D; “1900-01-01”<br>输出： date &#x3D; “11101101100-1-1”</p>
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>拆解：  </p>
-<ol>
-<li>提取字符串中的年月日字段</li>
-<li>将年月日字段转化为对应数值</li>
-<li>实现十进制到二进制转化</li>
+                <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ol>
+<li><p>map是关联容器,关联容器中的元素是通过题目的键引用的，而不是通过他们在容器中的绝对位置引用的。即<font color = yellow>使用键key来索引，值value才是真正存储的数据。</font>  </p>
+</li>
+<li><p>map容器存储的都是piar对象，也就是用pair类模板创建的<font color = red>键值对</font>，使用map容器存储的键的值既不能重复也不能被修改，更确切地说map中所存储的其实是<font color = red>pair&lt;const K, V&gt;</font>， 同时也会根据键的值对所有键值对进行排序。  </p>
+</li>
+<li><p>底层实现是红黑树。优点是可以根据key值快速找到value值。</p>
+</li>
 </ol>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">string <span class="hljs-title">binaryval</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span></span>&#123;<br>    string result;<br>    stack&lt;<span class="hljs-type">char</span>&gt; st;<br>    <span class="hljs-keyword">while</span>(val &gt;<span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-type">int</span> tar = val % <span class="hljs-number">2</span>;<br>        val /= <span class="hljs-number">2</span>;<br>        st.<span class="hljs-built_in">push</span>(<span class="hljs-string">&#x27;0&#x27;</span> + tar);<br>    &#125;<br>    <span class="hljs-keyword">while</span>(!st.<span class="hljs-built_in">empty</span>())&#123;<br>        result.<span class="hljs-built_in">push_back</span>(st.<span class="hljs-built_in">top</span>());<br>        st.<span class="hljs-built_in">pop</span>();<br>    &#125;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><br><span class="hljs-function">string <span class="hljs-title">convertDateToBinary</span><span class="hljs-params">(string date)</span> </span>&#123;<br>    <span class="hljs-type">int</span> year = <span class="hljs-built_in">stoi</span>(date.<span class="hljs-built_in">substr</span>(<span class="hljs-number">0</span>,<span class="hljs-number">4</span>));<br>    <span class="hljs-type">int</span> month = <span class="hljs-built_in">stoi</span>(date.<span class="hljs-built_in">substr</span>(<span class="hljs-number">5</span>,<span class="hljs-number">2</span>));<br>    <span class="hljs-type">int</span> day = <span class="hljs-built_in">stoi</span>(date.<span class="hljs-built_in">substr</span>(<span class="hljs-number">8</span>,<span class="hljs-number">2</span>));<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">binaryval</span>(year) +<span class="hljs-string">&quot;-&quot;</span>+ <span class="hljs-built_in">binaryval</span>(month) +<span class="hljs-string">&quot;-&quot;</span>+ <span class="hljs-built_in">binaryval</span>(day);<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="自优化"><a href="#自优化" class="headerlink" title="自优化"></a>自优化</h2><ul>
-<li>对string类的成员函数不够了解，容易浪费时间去实现已经造好的 ‘轮子’。因此应该重新熟悉string类的所有内容</li>
-<li>在编码时区分int类型数值与char类型显示的关系耗费了大量时间，需要重新熟悉SACII码表，以及梳理两者转关系。</li>
-<li>十进制转二进制的代码逻辑可以优化一版：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp">string str;<br><span class="hljs-keyword">while</span>(val &gt; <span class="hljs-number">0</span>)&#123;<br>    str.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&#x27;0&#x27;</span> + (val &amp; <span class="hljs-number">1</span>));<br>    val &gt;&gt;= <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-built_in">reverse</span>(str.<span class="hljs-built_in">begin</span>(),str.<span class="hljs-built_in">end</span>());<br><br></code></pre></td></tr></table></figure></li>
+<h2 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h2><p>因为map中存储的是pair类型，所以应该先了解pair类型的构造方式：  </p>
+<ul>
+<li>pair&lt;T1,T2&gt; p(V1, V2);</li>
+<li>pair&lt;T1,T2&gt; p &#x3D; make_pair(V1, V2);</li>
+<li>访问内容：pair.first &amp; pair.second</li>
 </ul>
+<p>map容器模板定于：  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span>&lt; <span class="hljs-keyword">class</span> <span class="hljs-title class_">key</span>,                                        <span class="hljs-comment">//键类型</span><br>          <span class="hljs-keyword">class</span> <span class="hljs-title class_">value</span>,                                      <span class="hljs-comment">//值类型</span><br>          <span class="hljs-keyword">class</span> <span class="hljs-title class_">Compare</span> = less&lt;key&gt;,                        <span class="hljs-comment">//排序规则</span><br>          <span class="hljs-keyword">class</span> Alloc = allocator&lt;pair&lt;<span class="hljs-type">const</span> K, V&gt;&gt;         <span class="hljs-comment">//分配器类型</span><br>          &gt; <span class="hljs-keyword">class</span> map;<br></code></pre></td></tr></table></figure>
+
+<p>构造map的方式：  </p>
+<ol>
+<li><font color = yellow>map&lt;string, int&gt; mp;</font> 创建一个空map    </li>
+<li><font color = yellow>map&lt;string, int&gt; mp{ { “xxx”, 1 }, { “yyy”, 2 } };</font>    注意这里不是括号  </li>
+<li><font color = yellow>map&lt;string, int&gt; mp{ make_pair(“xxx”, 1), make_pair(“yyy”, 2) };</font></li>
+<li><font color = yellow>map&lt;string, int&gt; mp( mp1 );</font>  拷贝构造</li>
+<li><font color = yellow>map&lt;string, int&gt; mp( mp1.begin( ), mp1.end( ) );</font>  迭代器</li>
+</ol>
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><ul>
+<li><p><font color = yellow>at( key )</font>，获取key键对应的值，如果该键不存在，则抛出out_of_range异常</p>
+</li>
+<li><p><font color = yellow>count( key )</font>，统计键为key的元素个数</p>
+</li>
+<li><p><font color = yellow>size( )</font>，用于统计容器中元素个数</p>
+</li>
+<li><p><font color = yellow>empty( )</font>，判断容器是否为空</p>
+</li>
+<li><p><font color = yellow>begin( )</font>，获取容器中第一个键值对的迭代器</p>
+</li>
+<li><p><font color = yellow>end( )</font>，获取容器中最后一个键值对后一位的迭代器</p>
+</li>
+<li><p>增</p>
+<ul>
+<li><p><font color = yellow>pair&lt; iterator, bool &gt; insert( pair&lt;K, V&gt; )</font>，插入一个键值对，注意返回值是一个键值对<br>插入成功时，返回值的first指向插入成功的位置，second值为true<br>插入失败时，返回值的first指向已存在的键值对位置，second值为false<br>ps:插入函数可以指定插入位置，但之后容器会重新再排序。  </p>
+</li>
+<li><p><font color = yellow>pair&lt; iterator, bool &gt; emplace(Args&amp;&amp;… args)</font>，该函数会自动调用pair的构造函数，因此参数只需要传入pair所需的数据即可。该方法比insert效率更高，使用也更简单，因此应该尽量使用。</p>
+</li>
+<li><p><font color = yellow>[ ]</font>，当使用map[key]来访问key的键值对时，如果没有该键的键值对，则会自动增加该键的键值对到容器中。</p>
+</li>
+</ul>
+</li>
+<li><p>删</p>
+<ul>
+<li><font color = yellow>iterator erase( const iterator position )</font>，删除指定位置键值对，返回删除位置的下一个位置的迭代器。</li>
+<li><font color = yellow>iterator erase( const iterator first, const iterator last )</font>，删除指定范围键值对</li>
+<li><font color = yellow>size_type erase( cosnt key_type&amp; k )</font>，删除指定键的所有键值对</li>
+<li><font color = yellow>void clear( )</font>， 删除所有元素</li>
+</ul>
+</li>
+<li><p>改</p>
+<ul>
+<li><font color = yellow>mp.at[ key ] &#x3D; new_val;</font></li>
+<li><font color = yellow>mp[ key ] &#x3D; new_val;</font></li>
+</ul>
+</li>
+<li><p>查</p>
+<ul>
+<li><font color = yellow>itetator find( key )</font>，在容器中查找键值为key的键值对，若找到，返回指向该位置的迭代器，否则返回end( )位置迭代器。  </li>
+<li><font color = yellow>lower_bound( key )</font>，返回第一个大于或等于key的键值对迭代器</li>
+<li><font color = yellow>upper_bound( key )</font>，返回第一个大于key的键值对迭代器</li>
+<li><font color = yellow>equal_range( key )</font>，返回一个pair对象，其中2个元素都是迭代器，first到second所表示的范围内都是键为key的键值对</li>
+</ul>
+</li>
+</ul>
+<h2 id="三种map"><a href="#三种map" class="headerlink" title="三种map"></a>三种map</h2><p>map (红黑树)：有序，键不能重复<br>multimap (红黑树)：有序，键能重复<br>unordered_map (哈希表)：无需，键不能重复  </p>
+<p>插入、删除、查找时间复杂度：<br>map&#x2F;multimap O(log n)<br>unordered_map O( 1 )  </p>
 
                 
               </div>
@@ -309,7 +368,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/leetcode/" class="category-chain-item">leetcode</a>
+  <a href="/categories/C/" class="category-chain-item">C++</a>
   
   
 
@@ -324,7 +383,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%A8%A1%E6%8B%9F/" class="print-no-link">#模拟</a>
+        <a href="/tags/STL/" class="print-no-link">#STL</a>
+      
+        <a href="/tags/map/" class="print-no-link">#map</a>
       
     </div>
   
@@ -336,8 +397,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[刷题]将日期转换为二进制</div>
-      <div>http://example.com/2025/01/01/将日期转换为二进制/</div>
+      <div>[STL]Map</div>
+      <div>http://example.com/2025/01/04/STL-Map/</div>
     </div>
     <div class="license-meta">
       
@@ -349,7 +410,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月1日</div>
+          <div>2025年1月4日</div>
         </div>
       
       
@@ -381,9 +442,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/01/02/%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" title="[刷题]无重复字符的最长子串">
+                      <a href="/2025/01/05/Cmake/" title="Cmake">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">[刷题]无重复字符的最长子串</span>
+                        <span class="hidden-mobile">Cmake</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -391,8 +452,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/25/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" title="[C++基础]智能指针">
-                        <span class="hidden-mobile">[C++基础]智能指针</span>
+                      <a href="/2025/01/02/%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" title="[刷题]无重复字符的最长子串">
+                        <span class="hidden-mobile">[刷题]无重复字符的最长子串</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

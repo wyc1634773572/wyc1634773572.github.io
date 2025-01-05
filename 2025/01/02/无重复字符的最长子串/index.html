@@ -19,22 +19,23 @@
   <meta name="author" content="WONE">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目描述给你一个字符串data，它的格式为 yyyy-mm-dd, 表示一个公历日期。date 可以重写为二进制表示，只需要将年、月、日分别转换为对应的二进制表示 (不带前导零) 并遵循year-mount-day的格式。返回date的二进制表示。 示例输入： date &#x3D; “2080-02-29”输出： date &#x3D; “100000100000-10-11101”   输入：">
+    <meta name="description" content="题目描述给你一个字符串s，请你找出其中不含有重复字符的最长子串的长度。 示例输入：s &#x3D; “abcabcbb”输出：3   输入：s &#x3D; “bbbbbb”输出：1 输入：s &#x3D; “pwwkew”输出：3   解析拆解：  如何遍历无重复子串？ 如何判断有无重复 如何记录最大长度  遍历无重复子串：滑动窗口使用左右两个指针划定窗口范围，同时保证窗口中始终是无重复的子串。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[刷题]将日期转换为二进制">
-<meta property="og:url" content="http://example.com/2025/01/01/%E5%B0%86%E6%97%A5%E6%9C%9F%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E8%BF%9B%E5%88%B6/index.html">
+<meta property="og:title" content="[刷题]无重复字符的最长子串">
+<meta property="og:url" content="http://example.com/2025/01/02/%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目描述给你一个字符串data，它的格式为 yyyy-mm-dd, 表示一个公历日期。date 可以重写为二进制表示，只需要将年、月、日分别转换为对应的二进制表示 (不带前导零) 并遵循year-mount-day的格式。返回date的二进制表示。 示例输入： date &#x3D; “2080-02-29”输出： date &#x3D; “100000100000-10-11101”   输入：">
+<meta property="og:description" content="题目描述给你一个字符串s，请你找出其中不含有重复字符的最长子串的长度。 示例输入：s &#x3D; “abcabcbb”输出：3   输入：s &#x3D; “bbbbbb”输出：1 输入：s &#x3D; “pwwkew”输出：3   解析拆解：  如何遍历无重复子串？ 如何判断有无重复 如何记录最大长度  遍历无重复子串：滑动窗口使用左右两个指针划定窗口范围，同时保证窗口中始终是无重复的子串。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-01T12:18:09.000Z">
-<meta property="article:modified_time" content="2025-01-02T16:27:51.830Z">
+<meta property="article:published_time" content="2025-01-02T14:10:27.000Z">
+<meta property="article:modified_time" content="2025-01-05T16:21:17.929Z">
 <meta property="article:author" content="WONE">
-<meta property="article:tag" content="模拟">
+<meta property="article:tag" content="滑动窗口">
+<meta property="article:tag" content="字符串">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>[刷题]将日期转换为二进制 - Hexo</title>
+  <title>[刷题]无重复字符的最长子串 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[刷题]将日期转换为二进制"></span>
+            <span id="subtitle" data-typed-text="[刷题]无重复字符的最长子串"></span>
           
         </div>
 
@@ -211,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-01 20:18" pubdate>
-          2025年1月1日 晚上
+        <time datetime="2025-01-02 22:10" pubdate>
+          2025年1月2日 晚上
         </time>
       </span>
     
@@ -223,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          356 字
+          435 字
         
       </span>
     
@@ -234,7 +235,7 @@
         
         
         
-          3 分钟
+          4 分钟
         
       </span>
     
@@ -271,25 +272,35 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[刷题]将日期转换为二进制</h1>
+            <h1 id="seo-header">[刷题]无重复字符的最长子串</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给你一个字符串data，它的格式为 yyyy-mm-dd, 表示一个公历日期。<br>date 可以重写为二进制表示，只需要将年、月、日分别转换为对应的二进制表示 (不带前导零) 并遵循year-mount-day的格式。<br>返回date的二进制表示。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>输入： date &#x3D; “2080-02-29”<br>输出： date &#x3D; “100000100000-10-11101”  </p>
-<p>输入： date &#x3D; “1900-01-01”<br>输出： date &#x3D; “11101101100-1-1”</p>
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>拆解：  </p>
+                <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个字符串s，请你找出其中不含有重复字符的最长子串的长度。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>输入：s &#x3D; “abcabcbb”<br>输出：3  </p>
+<p>输入：s &#x3D; “bbbbbb”<br>输出：1</p>
+<p>输入：s &#x3D; “pwwkew”<br>输出：3  </p>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>拆解：</p>
 <ol>
-<li>提取字符串中的年月日字段</li>
-<li>将年月日字段转化为对应数值</li>
-<li>实现十进制到二进制转化</li>
+<li>如何遍历无重复子串？</li>
+<li>如何判断有无重复</li>
+<li>如何记录最大长度</li>
 </ol>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">string <span class="hljs-title">binaryval</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span></span>&#123;<br>    string result;<br>    stack&lt;<span class="hljs-type">char</span>&gt; st;<br>    <span class="hljs-keyword">while</span>(val &gt;<span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-type">int</span> tar = val % <span class="hljs-number">2</span>;<br>        val /= <span class="hljs-number">2</span>;<br>        st.<span class="hljs-built_in">push</span>(<span class="hljs-string">&#x27;0&#x27;</span> + tar);<br>    &#125;<br>    <span class="hljs-keyword">while</span>(!st.<span class="hljs-built_in">empty</span>())&#123;<br>        result.<span class="hljs-built_in">push_back</span>(st.<span class="hljs-built_in">top</span>());<br>        st.<span class="hljs-built_in">pop</span>();<br>    &#125;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><br><span class="hljs-function">string <span class="hljs-title">convertDateToBinary</span><span class="hljs-params">(string date)</span> </span>&#123;<br>    <span class="hljs-type">int</span> year = <span class="hljs-built_in">stoi</span>(date.<span class="hljs-built_in">substr</span>(<span class="hljs-number">0</span>,<span class="hljs-number">4</span>));<br>    <span class="hljs-type">int</span> month = <span class="hljs-built_in">stoi</span>(date.<span class="hljs-built_in">substr</span>(<span class="hljs-number">5</span>,<span class="hljs-number">2</span>));<br>    <span class="hljs-type">int</span> day = <span class="hljs-built_in">stoi</span>(date.<span class="hljs-built_in">substr</span>(<span class="hljs-number">8</span>,<span class="hljs-number">2</span>));<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">binaryval</span>(year) +<span class="hljs-string">&quot;-&quot;</span>+ <span class="hljs-built_in">binaryval</span>(month) +<span class="hljs-string">&quot;-&quot;</span>+ <span class="hljs-built_in">binaryval</span>(day);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>遍历无重复子串：滑动窗口<br>使用左右两个指针划定窗口范围，同时保证窗口中始终是无重复的子串。<br>因为要求最长子串，所以右指针向右移动，拓宽窗口长度，同时判断其指向的字符是否与窗口中的字符重复：  </p>
+<ul>
+<li>右指针与窗口中内容未发生重复，则继续右移</li>
+<li>右指针与窗口中内容发生重复，左指针移动至窗口中重复字符的下一位 (保证窗口中无重复)</li>
+</ul>
+<p>直到右指针移动至字符串最后一位，结束窗口拓展。  </p>
+<p>以示例来推导过程：<br>(a)bcabcbb<br>(ab)cabcbb<br>(abc)abcbb<br>a(bca)bcbb<br>ab(cab)cbb<br>abc(abc)bb<br>abcab(cb)b<br>abcabcb(b)  </p>
+<p>边界条件，右指针第一次移动与最后一次移动。特殊情况，无字符串以及单字符字符串。</p>
+<p>判断有无重复：直接循环遍历窗口中的字符<br>记录最大长度：典型方法，同一个变量反复替代。  </p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(string s)</span> </span>&#123;<br>    <span class="hljs-type">int</span> max = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> r = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span>(r &lt; s.<span class="hljs-built_in">size</span>())&#123;<br>        <span class="hljs-comment">//循环检查是否重复r位是否与之前重复</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=l;i&lt;r;i++)&#123;<br>            <span class="hljs-keyword">if</span>(s[i] == s[r])&#123;<br>                l = i + <span class="hljs-number">1</span>;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>        max = max &gt; r - l + <span class="hljs-number">1</span> ? max : r - l + <span class="hljs-number">1</span>;<br>        r++;<br>    &#125;<br>    <span class="hljs-keyword">return</span> max;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <h2 id="自优化"><a href="#自优化" class="headerlink" title="自优化"></a>自优化</h2><ul>
-<li>对string类的成员函数不够了解，容易浪费时间去实现已经造好的 ‘轮子’。因此应该重新熟悉string类的所有内容</li>
-<li>在编码时区分int类型数值与char类型显示的关系耗费了大量时间，需要重新熟悉SACII码表，以及梳理两者转关系。</li>
-<li>十进制转二进制的代码逻辑可以优化一版：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp">string str;<br><span class="hljs-keyword">while</span>(val &gt; <span class="hljs-number">0</span>)&#123;<br>    str.<span class="hljs-built_in">push_back</span>(<span class="hljs-string">&#x27;0&#x27;</span> + (val &amp; <span class="hljs-number">1</span>));<br>    val &gt;&gt;= <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-built_in">reverse</span>(str.<span class="hljs-built_in">begin</span>(),str.<span class="hljs-built_in">end</span>());<br><br></code></pre></td></tr></table></figure></li>
+<li>动态规划解法</li>
+<li>使用集合来检查重复，提高效率</li>
 </ul>
 
                 
@@ -324,7 +335,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%A8%A1%E6%8B%9F/" class="print-no-link">#模拟</a>
+        <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="print-no-link">#滑动窗口</a>
+      
+        <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="print-no-link">#字符串</a>
       
     </div>
   
@@ -336,8 +349,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[刷题]将日期转换为二进制</div>
-      <div>http://example.com/2025/01/01/将日期转换为二进制/</div>
+      <div>[刷题]无重复字符的最长子串</div>
+      <div>http://example.com/2025/01/02/无重复字符的最长子串/</div>
     </div>
     <div class="license-meta">
       
@@ -349,7 +362,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月1日</div>
+          <div>2025年1月2日</div>
         </div>
       
       
@@ -381,9 +394,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/01/02/%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" title="[刷题]无重复字符的最长子串">
+                      <a href="/2025/01/04/STL-Map/" title="[STL]Map">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">[刷题]无重复字符的最长子串</span>
+                        <span class="hidden-mobile">[STL]Map</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -391,8 +404,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/25/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" title="[C++基础]智能指针">
-                        <span class="hidden-mobile">[C++基础]智能指针</span>
+                      <a href="/2025/01/01/%E5%B0%86%E6%97%A5%E6%9C%9F%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E8%BF%9B%E5%88%B6/" title="[刷题]将日期转换为二进制">
+                        <span class="hidden-mobile">[刷题]将日期转换为二进制</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
