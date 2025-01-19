@@ -27,7 +27,7 @@
 <meta property="og:description" content="Staticstatic用于控制存储方式以及可见性，总的来说他的修饰可分为两大类普通修饰：局部变量、全局变量、函数成员修饰：成员变量、成员函数    修饰局部变量。   我们知道局部变量的生命周期就在其所定义的那个局部范围内，如某个函数，某个循环，一旦走出这个范围局部变量将自动释放。static修饰局部变量时，将改变变量的生命周期，实际上就是将其存储区域由原来的栈区移至静态区，使其生命周期与程序一">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-18T15:05:21.000Z">
-<meta property="article:modified_time" content="2024-12-19T14:40:42.307Z">
+<meta property="article:modified_time" content="2025-01-11T16:19:31.559Z">
 <meta property="article:author" content="WONE">
 <meta property="article:tag" content="const">
 <meta property="article:tag" content="static">
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          906 字
+          932 字
         
       </span>
     
@@ -297,7 +297,7 @@
 </ol>
 <ul>
 <li><p>静态成员变量由于存储在静态区,在程序开始时就必须存在，因而有不能在类中定义，只初始化一次（默认为0）等特点。  </p>
-</li>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span> &#123;<br>  <span class="hljs-type">static</span> <span class="hljs-type">int</span> a;   <span class="hljs-comment">//只能声明</span><br>&#125;<br><span class="hljs-type">int</span> A::a = <span class="hljs-number">11</span>;     <span class="hljs-comment">//定义在类外，如果不赋值则默认给0</span><br></code></pre></td></tr></table></figure></li>
 <li><p>因为存储在静态区内，<strong>相当于一个全局变量</strong>，为所有类对象共有(相当于实现了类对象的数据共享)，但并没有包含在具体的类对象中，<font color=red>因此多添加一个静态成员不会影响sizeof()对类对象的计算值大小。</font>  </p>
 </li>
 <li><p>static修饰成员变量，必须初始化，必须在类外初始化，且不能再加static</p>

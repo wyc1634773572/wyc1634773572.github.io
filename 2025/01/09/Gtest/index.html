@@ -19,22 +19,22 @@
   <meta name="author" content="WONE">
   <meta name="keywords" content="">
   
-    <meta name="description" content="用途与共性智能指针用于更安全和方便地管理动态分配的资源，避免内存泄漏和悬空指针等问题。实质：将指针托管到一个对象中，资源的创建与对象的构造绑定，资源的释放与对象的析构绑定。这样，当对象生命周期结束时则会自动调用析构，由此完成资源释放。 (RAII)   既然是对象，那么就有自己的成员方法，智能指针常用的方法有：  get( )    获取智能指针托管的地址，返回指向该地址的裸指针 reset( _">
+    <meta name="description" content="根据Cmake搭建Gtest框架12345678910111213141516171819202122232425262728293031323334#设置c++标准set(CMAKE_CXX_STANDARD 14)set(CMAKE_CXX_STANDARD_REQUIRED ON)#包含FetchContent模块，用于从外部获取依赖项include(FetchContent)FetchCo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[C++基础]智能指针">
-<meta property="og:url" content="http://example.com/2024/12/25/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/index.html">
+<meta property="og:title" content="Gtest">
+<meta property="og:url" content="http://example.com/2025/01/09/Gtest/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="用途与共性智能指针用于更安全和方便地管理动态分配的资源，避免内存泄漏和悬空指针等问题。实质：将指针托管到一个对象中，资源的创建与对象的构造绑定，资源的释放与对象的析构绑定。这样，当对象生命周期结束时则会自动调用析构，由此完成资源释放。 (RAII)   既然是对象，那么就有自己的成员方法，智能指针常用的方法有：  get( )    获取智能指针托管的地址，返回指向该地址的裸指针 reset( _">
+<meta property="og:description" content="根据Cmake搭建Gtest框架12345678910111213141516171819202122232425262728293031323334#设置c++标准set(CMAKE_CXX_STANDARD 14)set(CMAKE_CXX_STANDARD_REQUIRED ON)#包含FetchContent模块，用于从外部获取依赖项include(FetchContent)FetchCo">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-12-24T16:01:41.000Z">
-<meta property="article:modified_time" content="2025-01-06T14:31:28.926Z">
+<meta property="article:published_time" content="2025-01-09T15:15:24.000Z">
+<meta property="article:modified_time" content="2025-01-11T17:04:32.433Z">
 <meta property="article:author" content="WONE">
-<meta property="article:tag" content="智能指针">
+<meta property="article:tag" content="test">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>[C++基础]智能指针 - Hexo</title>
+  <title>Gtest - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[C++基础]智能指针"></span>
+            <span id="subtitle" data-typed-text="Gtest"></span>
           
         </div>
 
@@ -211,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-25 00:01" pubdate>
-          2024年12月25日 凌晨
+        <time datetime="2025-01-09 23:15" pubdate>
+          2025年1月9日 晚上
         </time>
       </span>
     
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          696 字
+          579 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          6 分钟
+          5 分钟
         
       </span>
     
@@ -271,57 +271,22 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[C++基础]智能指针</h1>
+            <h1 id="seo-header">Gtest</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="用途与共性"><a href="#用途与共性" class="headerlink" title="用途与共性"></a>用途与共性</h1><p>智能指针用于更安全和方便地管理动态分配的资源，避免内存泄漏和悬空指针等问题。<br>实质：将指针托管到一个对象中，资源的创建与对象的构造绑定，资源的释放与对象的析构绑定。这样，当对象生命周期结束时则会自动调用析构，由此完成资源释放。 <font size=3 color=yellow>(RAII)</font>  </p>
-<p>既然是对象，那么就有自己的成员方法，智能指针常用的方法有：</p>
-<ol>
-<li><font size=3 color=yellow>get( )</font>    获取智能指针托管的地址，返回指向该地址的裸指针</li>
-<li><font size=3 color=yellow>reset( _Ty* _ptr &#x3D; nullptr )</font>   重置指针托管权，<font size=3 color=yellow>会释放以前被托管的内存，无返回</font>  </li>
-<li>因为重载了<font size=3 color=yellow>*和-&gt;</font>  两个运算符，所以智能指针可以像普通指针那样使用。</li>
-<li><font size=3 color=yellow>swap(Ty* _ptr)</font>  交换两个智能指针的托管内容</li>
-</ol>
-<p>ps：应该尽量避免智能指针和普通指针混合使用，容易造成泄漏和崩溃！</p>
-<h1 id="unique-ptr"><a href="#unique-ptr" class="headerlink" title="unique_ptr"></a>unique_ptr</h1><p>构造方式：  </p>
+                <h2 id="根据Cmake搭建Gtest框架"><a href="#根据Cmake搭建Gtest框架" class="headerlink" title="根据Cmake搭建Gtest框架"></a>根据Cmake搭建Gtest框架</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment">#设置c++标准</span><br><span class="hljs-keyword">set</span>(CMAKE_CXX_STANDARD <span class="hljs-number">14</span>)<br><span class="hljs-keyword">set</span>(CMAKE_CXX_STANDARD_REQUIRED <span class="hljs-keyword">ON</span>)<br><br><span class="hljs-comment">#包含FetchContent模块，用于从外部获取依赖项</span><br><span class="hljs-keyword">include</span>(FetchContent)<br>FetchContent_Declare(<br>    googleTest<br>    URL https://github.com/google/googletest/archive/<span class="hljs-number">03597</span>a01ee50ed33e9dfd640b249b4be3799d395.zip<br>)<br>FetchContent_MakeAvailable(googleTest)<br><br><span class="hljs-comment">#启用test</span><br><span class="hljs-keyword">enable_testing</span>()<br><br><span class="hljs-comment">#添加源文件</span><br><span class="hljs-keyword">add_executable</span>(<br>    mytest<br>    <span class="hljs-comment">#这里是依赖的源文件</span><br>    <span class="hljs-variable">$&#123;SRC_LIST&#125;</span><br>    <span class="hljs-comment">#以下是测试文件</span><br>    <span class="hljs-variable">$&#123;PROJECT_BINARY_DIR&#125;</span>/../<span class="hljs-keyword">test</span>/cmenu_interface_test.cpp<br>    <span class="hljs-variable">$&#123;PROJECT_BINARY_DIR&#125;</span>/../<span class="hljs-keyword">test</span>/caddress_interface_test.cpp<br>)<br><br><span class="hljs-comment">#链接主要的静态库gtest_main.a</span><br><span class="hljs-keyword">target_link_libraries</span>(<br>    mytest<br>    GTest::gtest_main<br>)<br><br><span class="hljs-comment">#包含googletest，并自动添加测试</span><br><span class="hljs-keyword">include</span>(GoogleTest)<br>gtest_discover_tests(mytest)<br></code></pre></td></tr></table></figure>
+<p>测试文件，如上例中的cmenu_interface_test.cpp，需要#include &lt;gtest&#x2F;gtest.h&gt;，然后使用测试宏编写单元测试。</p>
+<h2 id="GTest测试宏"><a href="#GTest测试宏" class="headerlink" title="GTest测试宏"></a>GTest测试宏</h2><h3 id="TEST"><a href="#TEST" class="headerlink" title="TEST"></a><font color=yellow>TEST</font></h3><p>使用 TEST宏来定义和命名一个测试函数。这是普通的 C++ 函数，不返回任何值。<br>在这个函数中，除了想包含的有效的 C++ 语句，还要使用各种 gtest 断言来检查值。<br>测试结果由断言确定；如果测试中的任何断言失败（无论是致命还是非致命），或者测试崩溃，整个测试都将失败。否则成功。<br>在该宏中，两个参数可以随意命名，但为了方便在测试结果中识别，还是应该按照测试逻辑命名</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;gtest/gtest.h&gt;</span></span><br><br><span class="hljs-built_in">TEST</span>(testsuitname, test1)&#123;<br>    <span class="hljs-comment">// ...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="TEST-F"><a href="#TEST-F" class="headerlink" title="TEST_F"></a><font color=yellow>TEST_F</font></h3><p>在使用TEST宏时写测试时，有时会发现很多测试操作的是类似的数据，这时就可以使用TEST_F宏来使多个测试使用相同的数据。<br>注意点：</p>
 <ul>
-<li><p>传统方式<br><font size=3 color=yellow>unique_ptr&lt;T&gt; p( new T( ) )</font>       </p>
-</li>
-<li><p>c++ 14<br><font size=3 color=yellow>unique_ptr&lt;T&gt; p &#x3D; make_unique&lt;T&gt;( )</font></p>
-</li>
+<li>必须从testing::Test派生一个类</li>
+<li>TEST_F的第一个参数必须是该派生类<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">CMytest</span> : <span class="hljs-keyword">public</span> testing::Test &#123;<br><span class="hljs-keyword">protected</span>:<br>    <span class="hljs-type">int</span>* pt;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">SetUp</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span></span>&#123;<br>        <span class="hljs-comment">//构造</span><br>        pt = <span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>(<span class="hljs-number">0</span>);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">TearDown</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span></span>&#123;<br>        <span class="hljs-comment">//析构</span><br>        <span class="hljs-keyword">delete</span> pt;<br>    &#125;<br>&#125;<br><br><span class="hljs-built_in">TEST_F</span>(CMytest, test1)&#123;<br>    <span class="hljs-comment">// ...</span><br>&#125;<br><br><span class="hljs-built_in">TEST_F</span>(CMytest, test2)&#123;<br>    <span class="hljs-comment">// ...</span><br>&#125;<br><br><span class="hljs-comment">//使用时，每个TEST_F都会在开始时调用SetUp，结束时使用TearDown。这样一来，就不必每次都手动配置数据pt了。</span><br></code></pre></td></tr></table></figure></li>
 </ul>
-<p>unique_ptr基于排他所有权模式，对动态分配的对象拥有唯一所有权，为了达到这一目的，禁止了普通拷贝与赋值，但可以通过std::move来转移资源所有权到另外一个unique_ptr中。实际是触发了它的移动构造。<br>常见转移所有权用法：</p>
-<ul>
-<li><font size=3 color=yellow>unique_ptr&lt;T&gt; p1 ( std::move( p ) );</font>  </li>
-<li><font size=3 color=yellow>unique_ptr&lt;T&gt; p1 &#x3D; std::move( p );</font>  </li>
-<li><font size=3 color=yellow>unique_ptr&lt;T&gt; p1( p.release( ) );</font>  </li>
-<li><font size=3 color=yellow>p1.reset( p1.release( ) );</font></li>
-</ul>
-<h1 id="shared-ptr"><a href="#shared-ptr" class="headerlink" title="shared_ptr"></a>shared_ptr</h1><p>构造方式：  </p>
-<ul>
-<li>传统方式<br><font size=3 color=yellow>shared_ptr&lt;T&gt; p( new T( ) )</font>  </li>
-<li>c++ 14<br><font size=3 color=yellow>shared_ptr&lt;T&gt; p &#x3D; make_shared_ptr&lt;T&gt;( )</font></li>
-</ul>
-<p>成员方法：</p>
-<ul>
-<li><font size=3 color=yellow>use_count( )</font>   返回当前指针托管指针的引用计数</li>
-<li>注意<font size=3 color=yellow>shared_ptr没有release( )</font>  方法</li>
-</ul>
-<p>shared_ptr是一种共享式的指针，多个指针可以可以指向同一个对象。内部采用引用计数的方式追踪引用数量，当计数为零时才会自动销毁托管对象。<br>该指针在引用计数采用了原子操作，因此其本身是线程安全的，但对其托管对象的操作则并不是。<br>引用增加：  </p>
-<ul>
-<li><font size=3 color=yellow>shared_ptr&lt;T&gt; p1 &#x3D; p;</font>    </li>
-<li><font size=3 color=yellow>shared_ptr&lt;T&gt; p1( p );</font></li>
-</ul>
-<p>主动释放：</p>
-<ul>
-<li><font size=3 color=yellow>p1 &#x3D; nullptr;</font>  </li>
-<li><font size=3 color=yellow>p1.reset( );</font></li>
-</ul>
-<p>shared_ptr最需要注意的一点需要小心<font size=3 color=red>循环引用</font>造成无法释放资源：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Node</span>&#123;<br>    <span class="hljs-type">int</span> _val;<br>    shared_ptr&lt;Node&gt; _next;<br><br>    ~<span class="hljs-built_in">Node</span>()&#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;调用析构&quot;</span> &lt;&lt; endl;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">auto</span> p1 = <span class="hljs-built_in">make_shared_ptr</span>&lt;Node&gt;();<br>    <span class="hljs-keyword">auto</span> p2 = <span class="hljs-built_in">make_shared_ptr</span>&lt;Node&gt;();<br><br>    p1-&gt;_next = p2;<br>    p2-&gt;_next = p1;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>上述示例会发现最后并没有调用到析构函数，因为两个智能指针互相管理，导致引用最后无法减到0.<br>解决方法，Node内部采用weak_ptr.</p>
+<h3 id="TEST-P"><a href="#TEST-P" class="headerlink" title="TEST_P"></a><font color=yellow>TEST_P</font></h3><h2 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h2><p>ASSERT_*  致命断言，断言失败时，会中止当前TEST，转而执行下个TEST<br>EXPECT_*  非致命断言，断言失败时，继续执行当前TEST<br>gtest 提供了一系列断言，用于以各种方式验证代码的行为。可以检查布尔条件，基于关系运算符比较值，验证字符串值、浮点值等等。甚至还有一些断言可以通过提供自定义谓词来验证更复杂的状态，如下：  </p>
+<p>EXPECT_TRUE<br>EXPECT_NE<br>EXPECT_STREQ<br>EXPECT_FLOAT_EQ<br>…</p>
 
                 
               </div>
@@ -340,7 +305,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/C/" class="category-chain-item">C++</a>
+  <a href="/categories/Tool/" class="category-chain-item">Tool</a>
   
   
 
@@ -355,7 +320,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" class="print-no-link">#智能指针</a>
+        <a href="/tags/test/" class="print-no-link">#test</a>
       
     </div>
   
@@ -367,8 +332,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[C++基础]智能指针</div>
-      <div>http://example.com/2024/12/25/智能指针/</div>
+      <div>Gtest</div>
+      <div>http://example.com/2025/01/09/Gtest/</div>
     </div>
     <div class="license-meta">
       
@@ -380,7 +345,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年12月25日</div>
+          <div>2025年1月9日</div>
         </div>
       
       
@@ -412,9 +377,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/01/01/%E5%B0%86%E6%97%A5%E6%9C%9F%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E8%BF%9B%E5%88%B6/" title="[刷题]将日期转换为二进制">
+                      <a href="/2025/01/09/%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8%E4%B8%A4%E4%B8%89%E4%BA%8B/" title="[C++基础]右值引用相关">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">[刷题]将日期转换为二进制</span>
+                        <span class="hidden-mobile">[C++基础]右值引用相关</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -422,8 +387,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/22/Git/" title="Git">
-                        <span class="hidden-mobile">Git</span>
+                      <a href="/2025/01/07/STL-String/" title="STL-String">
+                        <span class="hidden-mobile">STL-String</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

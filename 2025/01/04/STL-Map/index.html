@@ -27,7 +27,7 @@
 <meta property="og:description" content="基本概念 map是关联容器,关联容器中的元素是通过题目的键引用的，而不是通过他们在容器中的绝对位置引用的。即使用键key来索引，值value才是真正存储的数据。    map容器存储的都是piar对象，也就是用pair类模板创建的键值对，使用map容器存储的键的值既不能重复也不能被修改，更确切地说map中所存储的其实是pair&lt;const K, V&gt;， 同时也会根据键的值对所有键值对进">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-04T13:48:25.000Z">
-<meta property="article:modified_time" content="2025-01-05T14:38:57.084Z">
+<meta property="article:modified_time" content="2025-01-09T15:09:13.488Z">
 <meta property="article:author" content="WONE">
 <meta property="article:tag" content="STL">
 <meta property="article:tag" content="map">
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          869 字
+          883 字
         
       </span>
     
@@ -291,7 +291,7 @@
 <li>pair&lt;T1,T2&gt; p &#x3D; make_pair(V1, V2);</li>
 <li>访问内容：pair.first &amp; pair.second</li>
 </ul>
-<p>map容器模板定于：  </p>
+<p>map容器模板定义：  </p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span>&lt; <span class="hljs-keyword">class</span> <span class="hljs-title class_">key</span>,                                        <span class="hljs-comment">//键类型</span><br>          <span class="hljs-keyword">class</span> <span class="hljs-title class_">value</span>,                                      <span class="hljs-comment">//值类型</span><br>          <span class="hljs-keyword">class</span> <span class="hljs-title class_">Compare</span> = less&lt;key&gt;,                        <span class="hljs-comment">//排序规则</span><br>          <span class="hljs-keyword">class</span> Alloc = allocator&lt;pair&lt;<span class="hljs-type">const</span> K, V&gt;&gt;         <span class="hljs-comment">//分配器类型</span><br>          &gt; <span class="hljs-keyword">class</span> map;<br></code></pre></td></tr></table></figure>
 
 <p>构造map的方式：  </p>
@@ -303,7 +303,7 @@
 <li><font color = yellow>map&lt;string, int&gt; mp( mp1.begin( ), mp1.end( ) );</font>  迭代器</li>
 </ol>
 <h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><ul>
-<li><p><font color = yellow>at( key )</font>，获取key键对应的值，如果该键不存在，则抛出out_of_range异常</p>
+<li><p><font color = yellow>at( key )</font>，获取key键对应的值，会进行下标检查，如果该键不存在，则抛出out_of_range异常</p>
 </li>
 <li><p><font color = yellow>count( key )</font>，统计键为key的元素个数</p>
 </li>
@@ -321,7 +321,7 @@
 </li>
 <li><p><font color = yellow>pair&lt; iterator, bool &gt; emplace(Args&amp;&amp;… args)</font>，该函数会自动调用pair的构造函数，因此参数只需要传入pair所需的数据即可。该方法比insert效率更高，使用也更简单，因此应该尽量使用。</p>
 </li>
-<li><p><font color = yellow>[ ]</font>，当使用map[key]来访问key的键值对时，如果没有该键的键值对，则会自动增加该键的键值对到容器中。</p>
+<li><p><font color = yellow>[ ]</font>，当使用map[key]来访问key的键值对时，不会做下标检查，如果没有该键的键值对，则会自动增加该键的键值对到容器中。</p>
 </li>
 </ul>
 </li>
@@ -348,7 +348,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="三种map"><a href="#三种map" class="headerlink" title="三种map"></a>三种map</h2><p>map (红黑树)：有序，键不能重复<br>multimap (红黑树)：有序，键能重复<br>unordered_map (哈希表)：无需，键不能重复  </p>
+<h2 id="三种map"><a href="#三种map" class="headerlink" title="三种map"></a>三种map</h2><p>map (红黑树)：有序，键不能重复<br>multimap (红黑树)：有序，键能重复<br>unordered_map (哈希表)：无序，键不能重复  </p>
 <p>插入、删除、查找时间复杂度：<br>map&#x2F;multimap O(log n)<br>unordered_map O( 1 )  </p>
 
                 

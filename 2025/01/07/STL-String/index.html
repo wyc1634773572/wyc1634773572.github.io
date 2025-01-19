@@ -19,22 +19,23 @@
   <meta name="author" content="WONE">
   <meta name="keywords" content="">
   
-    <meta name="description" content="用途与共性智能指针用于更安全和方便地管理动态分配的资源，避免内存泄漏和悬空指针等问题。实质：将指针托管到一个对象中，资源的创建与对象的构造绑定，资源的释放与对象的析构绑定。这样，当对象生命周期结束时则会自动调用析构，由此完成资源释放。 (RAII)   既然是对象，那么就有自己的成员方法，智能指针常用的方法有：  get( )    获取智能指针托管的地址，返回指向该地址的裸指针 reset( _">
+    <meta name="description" content="基本概念 在C语言中，字符串是以’\0’结尾的一些字符的集合，但对这些字符串的操作需要依靠一系列str库函数，操作对象与操作方法是分离的。这不太符合面向对象的思想，于是C++中引入了String类。它是一个管理字符串的数据结构。    string本质上是一个类，是c++用来代替char数组的数据结构，内部封装了char*。其空间大小如同vector一样是动态变化的。  string的接口与常规容">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[C++基础]智能指针">
-<meta property="og:url" content="http://example.com/2024/12/25/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/index.html">
+<meta property="og:title" content="STL-String">
+<meta property="og:url" content="http://example.com/2025/01/07/STL-String/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="用途与共性智能指针用于更安全和方便地管理动态分配的资源，避免内存泄漏和悬空指针等问题。实质：将指针托管到一个对象中，资源的创建与对象的构造绑定，资源的释放与对象的析构绑定。这样，当对象生命周期结束时则会自动调用析构，由此完成资源释放。 (RAII)   既然是对象，那么就有自己的成员方法，智能指针常用的方法有：  get( )    获取智能指针托管的地址，返回指向该地址的裸指针 reset( _">
+<meta property="og:description" content="基本概念 在C语言中，字符串是以’\0’结尾的一些字符的集合，但对这些字符串的操作需要依靠一系列str库函数，操作对象与操作方法是分离的。这不太符合面向对象的思想，于是C++中引入了String类。它是一个管理字符串的数据结构。    string本质上是一个类，是c++用来代替char数组的数据结构，内部封装了char*。其空间大小如同vector一样是动态变化的。  string的接口与常规容">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-12-24T16:01:41.000Z">
-<meta property="article:modified_time" content="2025-01-06T14:31:28.926Z">
+<meta property="article:published_time" content="2025-01-07T15:25:21.000Z">
+<meta property="article:modified_time" content="2025-01-09T15:20:37.906Z">
 <meta property="article:author" content="WONE">
-<meta property="article:tag" content="智能指针">
+<meta property="article:tag" content="STL">
+<meta property="article:tag" content="string">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>[C++基础]智能指针 - Hexo</title>
+  <title>STL-String - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[C++基础]智能指针"></span>
+            <span id="subtitle" data-typed-text="STL-String"></span>
           
         </div>
 
@@ -211,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-25 00:01" pubdate>
-          2024年12月25日 凌晨
+        <time datetime="2025-01-07 23:25" pubdate>
+          2025年1月7日 晚上
         </time>
       </span>
     
@@ -223,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          696 字
+          556 字
         
       </span>
     
@@ -234,7 +235,7 @@
         
         
         
-          6 分钟
+          5 分钟
         
       </span>
     
@@ -271,57 +272,66 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[C++基础]智能指针</h1>
+            <h1 id="seo-header">STL-String</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="用途与共性"><a href="#用途与共性" class="headerlink" title="用途与共性"></a>用途与共性</h1><p>智能指针用于更安全和方便地管理动态分配的资源，避免内存泄漏和悬空指针等问题。<br>实质：将指针托管到一个对象中，资源的创建与对象的构造绑定，资源的释放与对象的析构绑定。这样，当对象生命周期结束时则会自动调用析构，由此完成资源释放。 <font size=3 color=yellow>(RAII)</font>  </p>
-<p>既然是对象，那么就有自己的成员方法，智能指针常用的方法有：</p>
-<ol>
-<li><font size=3 color=yellow>get( )</font>    获取智能指针托管的地址，返回指向该地址的裸指针</li>
-<li><font size=3 color=yellow>reset( _Ty* _ptr &#x3D; nullptr )</font>   重置指针托管权，<font size=3 color=yellow>会释放以前被托管的内存，无返回</font>  </li>
-<li>因为重载了<font size=3 color=yellow>*和-&gt;</font>  两个运算符，所以智能指针可以像普通指针那样使用。</li>
-<li><font size=3 color=yellow>swap(Ty* _ptr)</font>  交换两个智能指针的托管内容</li>
+                <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ol>
+<li><p>在C语言中，字符串是以’\0’结尾的一些字符的集合，但对这些字符串的操作需要依靠一系列str库函数，操作对象与操作方法是分离的。这不太符合面向对象的思想，于是C++中引入了String类。它是一个管理字符串的数据结构。  </p>
+</li>
+<li><p>string本质上是一个类，是c++用来代替char数组的数据结构，内部封装了char*。其空间大小如同vector一样是动态变化的。</p>
+</li>
+<li><p>string的接口与常规容器接口基本相同，另外再添加了一些操作string的常规方法。</p>
+</li>
 </ol>
-<p>ps：应该尽量避免智能指针和普通指针混合使用，容易造成泄漏和崩溃！</p>
-<h1 id="unique-ptr"><a href="#unique-ptr" class="headerlink" title="unique_ptr"></a>unique_ptr</h1><p>构造方式：  </p>
-<ul>
-<li><p>传统方式<br><font size=3 color=yellow>unique_ptr&lt;T&gt; p( new T( ) )</font>       </p>
+<h2 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h2><ol>
+<li><font color = yellow>string();</font> 构造一个空字符串</li>
+<li><font color = yellow>string(const char* s);</font></li>
+<li><font color = yellow>string(const string&amp; str);</font></li>
+<li><font color = yellow>string(const string&amp; str, size_t pos, size_t len &#x3D; npos);</font></li>
+<li><font color = yellow>string&amp; operator&#x3D; (const &amp; string);</font></li>
+<li><font color = yellow>string&amp; operator&#x3D; (const char* s);</font></li>
+<li><font color = yellow>string&amp; operator&#x3D; (char c);</font></li>
+</ol>
+<h2 id="常用成员方法"><a href="#常用成员方法" class="headerlink" title="常用成员方法"></a>常用成员方法</h2><ol>
+<li>访问操作<ul>
+<li><font color = yellow>int operator [ ]</font>  返回指定位置的字符</li>
+<li><font color = yellow>int at(pos)</font> 返回指定位置的字符</li>
+<li><font color = yellow>iterator begin()</font></li>
+<li><font color = yellow>iterator end()</font></li>
+<li><font color = yellow>范围for</font>  必须具有迭代器的容器才能使用范围for：  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> c : str) &#123;&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
 </li>
-<li><p>c++ 14<br><font size=3 color=yellow>unique_ptr&lt;T&gt; p &#x3D; make_unique&lt;T&gt;( )</font></p>
+<li>容量操作<ul>
+<li><font color = yellow>size_t size()</font> 返回元素(字符)数量</li>
+<li><font color = yellow>size_t capacity()</font> 返回分配的空间大小</li>
+<li><font color = yellow>void clear()</font> 清空所有字符</li>
+<li><font color = yellow>bool empty()</font> 检查字符串是否为空</li>
+<li><font color = yellow>reverse(size_t n)</font> 重新分配空间</li>
+<li><font color = yellow>resize(size_t n)</font> 重新设定元素数量</li>
+</ul>
 </li>
+<li>增删改查<ul>
+<li><font color = yellow>void push_back(char c)</font> 字符串后追加一个字符</li>
+<li><font color = yellow>string&amp; append(const string&amp; str)</font> 字符串后面追加一个字符串</li>
+<li><font color = yellow>void pop_back()</font> 弹出最后一个字符</li>
+<li><font color = yellow>string&amp; operator+&#x3D;(const string&amp; str)</font> 字符串拼接</li>
+<li><font color = yellow>string&amp; insert(size_t pos, const string&amp; str)</font> 在pos位置插入字符串</li>
+<li><font color = yellow>string&amp; assign(const string&amp; str)</font> 将字符串重新赋值为str</li>
+<li><font color = yellow>string&amp; erase(size_t pos&#x3D;0, size_t len&#x3D;npos)</font> 从pos开始删除len个字符</li>
+<li><font color = yellow>void swap(string&amp; str)</font> 交换两个字符串</li>
 </ul>
-<p>unique_ptr基于排他所有权模式，对动态分配的对象拥有唯一所有权，为了达到这一目的，禁止了普通拷贝与赋值，但可以通过std::move来转移资源所有权到另外一个unique_ptr中。实际是触发了它的移动构造。<br>常见转移所有权用法：</p>
-<ul>
-<li><font size=3 color=yellow>unique_ptr&lt;T&gt; p1 ( std::move( p ) );</font>  </li>
-<li><font size=3 color=yellow>unique_ptr&lt;T&gt; p1 &#x3D; std::move( p );</font>  </li>
-<li><font size=3 color=yellow>unique_ptr&lt;T&gt; p1( p.release( ) );</font>  </li>
-<li><font size=3 color=yellow>p1.reset( p1.release( ) );</font></li>
+</li>
+<li>其他操作<ul>
+<li><font color = yellow>const char* c_str()</font> 获取等效的const char* 字符串</li>
+<li><font color = yellow>string substr(size_t pos&#x3D;0, size_t len&#x3D;npos)</font> 从pos开始截取len个字符的子串</li>
+<li><font color = yellow>size_t find(const string&amp; str, size_t pos&#x3D;0)</font> 从pos开始查找str子串第一次出现的位置</li>
 </ul>
-<h1 id="shared-ptr"><a href="#shared-ptr" class="headerlink" title="shared_ptr"></a>shared_ptr</h1><p>构造方式：  </p>
-<ul>
-<li>传统方式<br><font size=3 color=yellow>shared_ptr&lt;T&gt; p( new T( ) )</font>  </li>
-<li>c++ 14<br><font size=3 color=yellow>shared_ptr&lt;T&gt; p &#x3D; make_shared_ptr&lt;T&gt;( )</font></li>
-</ul>
-<p>成员方法：</p>
-<ul>
-<li><font size=3 color=yellow>use_count( )</font>   返回当前指针托管指针的引用计数</li>
-<li>注意<font size=3 color=yellow>shared_ptr没有release( )</font>  方法</li>
-</ul>
-<p>shared_ptr是一种共享式的指针，多个指针可以可以指向同一个对象。内部采用引用计数的方式追踪引用数量，当计数为零时才会自动销毁托管对象。<br>该指针在引用计数采用了原子操作，因此其本身是线程安全的，但对其托管对象的操作则并不是。<br>引用增加：  </p>
-<ul>
-<li><font size=3 color=yellow>shared_ptr&lt;T&gt; p1 &#x3D; p;</font>    </li>
-<li><font size=3 color=yellow>shared_ptr&lt;T&gt; p1( p );</font></li>
-</ul>
-<p>主动释放：</p>
-<ul>
-<li><font size=3 color=yellow>p1 &#x3D; nullptr;</font>  </li>
-<li><font size=3 color=yellow>p1.reset( );</font></li>
-</ul>
-<p>shared_ptr最需要注意的一点需要小心<font size=3 color=red>循环引用</font>造成无法释放资源：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Node</span>&#123;<br>    <span class="hljs-type">int</span> _val;<br>    shared_ptr&lt;Node&gt; _next;<br><br>    ~<span class="hljs-built_in">Node</span>()&#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;调用析构&quot;</span> &lt;&lt; endl;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">auto</span> p1 = <span class="hljs-built_in">make_shared_ptr</span>&lt;Node&gt;();<br>    <span class="hljs-keyword">auto</span> p2 = <span class="hljs-built_in">make_shared_ptr</span>&lt;Node&gt;();<br><br>    p1-&gt;_next = p2;<br>    p2-&gt;_next = p1;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>上述示例会发现最后并没有调用到析构函数，因为两个智能指针互相管理，导致引用最后无法减到0.<br>解决方法，Node内部采用weak_ptr.</p>
+</li>
+</ol>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>-上述方法中，凡是涉及到参数const string&amp; str的方法，基本上都有另外一种const char* 参数和迭代器参数的重载，例如：  </p>
+<p><font color = yellow>string&amp; assign(const string&amp; str)</font><br><font color = yellow>string&amp; assign(const char* s)</font><br><font color = yellow>string&amp; assign(iterator first, iterator last)</font></p>
 
                 
               </div>
@@ -355,7 +365,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" class="print-no-link">#智能指针</a>
+        <a href="/tags/STL/" class="print-no-link">#STL</a>
+      
+        <a href="/tags/string/" class="print-no-link">#string</a>
       
     </div>
   
@@ -367,8 +379,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[C++基础]智能指针</div>
-      <div>http://example.com/2024/12/25/智能指针/</div>
+      <div>STL-String</div>
+      <div>http://example.com/2025/01/07/STL-String/</div>
     </div>
     <div class="license-meta">
       
@@ -380,7 +392,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年12月25日</div>
+          <div>2025年1月7日</div>
         </div>
       
       
@@ -412,9 +424,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/01/01/%E5%B0%86%E6%97%A5%E6%9C%9F%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E8%BF%9B%E5%88%B6/" title="[刷题]将日期转换为二进制">
+                      <a href="/2025/01/09/Gtest/" title="Gtest">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">[刷题]将日期转换为二进制</span>
+                        <span class="hidden-mobile">Gtest</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -422,8 +434,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/22/Git/" title="Git">
-                        <span class="hidden-mobile">Git</span>
+                      <a href="/2025/01/05/Cmake/" title="Cmake">
+                        <span class="hidden-mobile">Cmake</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
