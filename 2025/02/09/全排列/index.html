@@ -19,23 +19,24 @@
   <meta name="author" content="WONE">
   <meta name="keywords" content="">
   
-    <meta name="description" content="基本概念 在C语言中，字符串是以’\0’结尾的一些字符的集合，但对这些字符串的操作需要依靠一系列str库函数，操作对象与操作方法是分离的。这不太符合面向对象的思想，于是C++中引入了String类。它是一个管理字符串的数据结构。    string本质上是一个类，是c++用来代替char数组的数据结构，内部封装了char*。其空间大小如同vector一样是动态变化的。  string的接口与常规容">
+    <meta name="description" content="题目描述给定一个不含重复数字的数组 nums ，返回其 所有可能的全排列 。你可以 按任意顺序 返回答案。 示例输入：nums &#x3D; [1,2,3]输出：[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]] 思路目标是返回所有可能的排列，很自然想到可以这样来穷举：以1开头：123, 132  即1 + [2,3]全排列以2开头：213, 231">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[STL]String">
-<meta property="og:url" content="http://example.com/2025/01/07/STL-String/index.html">
+<meta property="og:title" content="[刷题]全排列">
+<meta property="og:url" content="http://example.com/2025/02/09/%E5%85%A8%E6%8E%92%E5%88%97/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="基本概念 在C语言中，字符串是以’\0’结尾的一些字符的集合，但对这些字符串的操作需要依靠一系列str库函数，操作对象与操作方法是分离的。这不太符合面向对象的思想，于是C++中引入了String类。它是一个管理字符串的数据结构。    string本质上是一个类，是c++用来代替char数组的数据结构，内部封装了char*。其空间大小如同vector一样是动态变化的。  string的接口与常规容">
+<meta property="og:description" content="题目描述给定一个不含重复数字的数组 nums ，返回其 所有可能的全排列 。你可以 按任意顺序 返回答案。 示例输入：nums &#x3D; [1,2,3]输出：[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]] 思路目标是返回所有可能的排列，很自然想到可以这样来穷举：以1开头：123, 132  即1 + [2,3]全排列以2开头：213, 231">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-07T15:25:21.000Z">
-<meta property="article:modified_time" content="2025-01-20T15:38:11.119Z">
+<meta property="og:image" content="http://example.com/image/traceback_model.png">
+<meta property="article:published_time" content="2025-02-09T15:22:32.000Z">
+<meta property="article:modified_time" content="2025-02-09T16:53:14.635Z">
 <meta property="article:author" content="WONE">
-<meta property="article:tag" content="STL">
-<meta property="article:tag" content="string">
+<meta property="article:tag" content="回溯">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/image/traceback_model.png">
   
   
   
-  <title>[STL]String - Hexo</title>
+  <title>[刷题]全排列 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[STL]String"></span>
+            <span id="subtitle" data-typed-text="[刷题]全排列"></span>
           
         </div>
 
@@ -212,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-07 23:25" pubdate>
-          2025年1月7日 晚上
+        <time datetime="2025-02-09 23:22" pubdate>
+          2025年2月9日 晚上
         </time>
       </span>
     
@@ -224,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          556 字
+          831 字
         
       </span>
     
@@ -235,7 +236,7 @@
         
         
         
-          5 分钟
+          7 分钟
         
       </span>
     
@@ -272,66 +273,34 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[STL]String</h1>
+            <h1 id="seo-header">[刷题]全排列</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ol>
-<li><p>在C语言中，字符串是以’\0’结尾的一些字符的集合，但对这些字符串的操作需要依靠一系列str库函数，操作对象与操作方法是分离的。这不太符合面向对象的思想，于是C++中引入了String类。它是一个管理字符串的数据结构。  </p>
+                <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个不含重复数字的数组 nums ，返回其 所有可能的全排列 。你可以 按任意顺序 返回答案。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>输入：nums &#x3D; [1,2,3]<br>输出：[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>目标是返回所有可能的排列，很自然想到可以这样来穷举：<br>以1开头：123, 132  即1 + [2,3]全排列<br>以2开头：213, 231  即2 + [1,3]全排列<br>以3开头：312, 321  即3 + [1,2]全排列<br>可见，每一轮选定数字都有很多种可能，即多阶段决策问题。这种问题一般使用动态规划和回溯来求解。动态规划多用于评估只有一个方案的结果，像这种需要得到所有方案的题，使用回溯算法。</p>
+<p>画图：<br><img src="/image/traceback_model.png" srcset="/img/loading.gif" lazyload alt="回溯模型，其实完成就是一棵树的深度优先遍历">  </p>
+<p>关键点：<br>    - 遍历过程的中止条件：当所有数字都被选中时，即是遍历到叶子层时。可以使用一个变量记录当前处于哪个层次。<br>    - 每次选中一个数字，在这之后的分支中该数字就不可再选中了，因此需要一个办法来记录哪些数字是被选中的。<br>    - 回溯算法，关键是在撤回上一步时恢复成上一步的状态。因此中间会有一段对更新了的状态变量的”逆操作”</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; res;<br>    vector&lt;<span class="hljs-type">int</span>&gt; path;<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">permute</span>(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums) &#123;<br>        <span class="hljs-type">int</span> len = nums.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-function">vector&lt;<span class="hljs-type">bool</span>&gt; <span class="hljs-title">note</span><span class="hljs-params">(len,<span class="hljs-literal">false</span>)</span></span>;<br>        <span class="hljs-built_in">backtrace</span>(nums,note);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">backtrace</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, vector&lt;<span class="hljs-type">bool</span>&gt;&amp; note)</span></span>&#123;<br>        <span class="hljs-comment">//中止条件，这里直接使用存储数字的向量size来比较，可以省略一个记录层次的变量</span><br>        <span class="hljs-keyword">if</span>(path.<span class="hljs-built_in">size</span>() == nums.<span class="hljs-built_in">size</span>())&#123;<br>            res.<span class="hljs-built_in">push_back</span>(path);<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-comment">//选择元素</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;nums.<span class="hljs-built_in">size</span>();i++)&#123;<br>            <span class="hljs-comment">//note为false时表示i索引还没有被选过</span><br>            <span class="hljs-keyword">if</span>(note[i] == <span class="hljs-literal">false</span>)&#123;<br>                <span class="hljs-comment">//更新状态</span><br>                note[i] = <span class="hljs-literal">true</span>;<br>                path.<span class="hljs-built_in">push_back</span>(nums[i]);<br>                <span class="hljs-comment">//递归，进入下一层</span><br>                <span class="hljs-built_in">backtrace</span>(nums,note);<br>                <span class="hljs-comment">//回溯，之前更新过状态的逆过程</span><br>                path.<span class="hljs-built_in">pop_back</span>();<br>                note[i] = <span class="hljs-literal">false</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li><p>多阶段决策问题,即每一轮会有多种选择的问题，首先考虑动态规划和回溯。</p>
 </li>
-<li><p>string本质上是一个类，是c++用来代替char数组的数据结构，内部封装了char*。其空间大小如同vector一样是动态变化的。</p>
-</li>
-<li><p>string的接口与常规容器接口基本相同，另外再添加了一些操作string的常规方法。</p>
-</li>
+<li><p>刚开始不熟练，回溯问题最好先画图考虑清楚过程，再编码。画图中来思考：</p>
+<ol>
+<li>分支如何产生？</li>
+<li>题目需要的解在哪里？是叶子节点还是非叶子节点，还是根节点到叶子节点的路径？</li>
+<li>哪些分支会产生不需要的解，产生重复的原因是什么，剪枝条件是什么？</li>
 </ol>
-<h2 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h2><ol>
-<li><font color = yellow>string();</font> 构造一个空字符串</li>
-<li><font color = yellow>string(const char* s);</font></li>
-<li><font color = yellow>string(const string&amp; str);</font></li>
-<li><font color = yellow>string(const string&amp; str, size_t pos, size_t len &#x3D; npos);</font></li>
-<li><font color = yellow>string&amp; operator&#x3D; (const &amp; string);</font></li>
-<li><font color = yellow>string&amp; operator&#x3D; (const char* s);</font></li>
-<li><font color = yellow>string&amp; operator&#x3D; (char c);</font></li>
-</ol>
-<h2 id="常用成员方法"><a href="#常用成员方法" class="headerlink" title="常用成员方法"></a>常用成员方法</h2><ol>
-<li>访问操作<ul>
-<li><font color = yellow>int operator [ ]</font>  返回指定位置的字符</li>
-<li><font color = yellow>int at(pos)</font> 返回指定位置的字符</li>
-<li><font color = yellow>iterator begin()</font></li>
-<li><font color = yellow>iterator end()</font></li>
-<li><font color = yellow>范围for</font>  必须具有迭代器的容器才能使用范围for：  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> c : str) &#123;&#125;<br></code></pre></td></tr></table></figure></li>
-</ul>
 </li>
-<li>容量操作<ul>
-<li><font color = yellow>size_t size()</font> 返回元素(字符)数量</li>
-<li><font color = yellow>size_t capacity()</font> 返回分配的空间大小</li>
-<li><font color = yellow>void clear()</font> 清空所有字符</li>
-<li><font color = yellow>bool empty()</font> 检查字符串是否为空</li>
-<li><font color = yellow>reverse(size_t n)</font> 重新分配空间</li>
-<li><font color = yellow>resize(size_t n)</font> 重新设定元素数量</li>
-</ul>
+<li><p>回溯几乎就是深度优先遍历的实现，除了使用常规的递归，也可以使用栈来实现。</p>
 </li>
-<li>增删改查<ul>
-<li><font color = yellow>void push_back(char c)</font> 字符串后追加一个字符</li>
-<li><font color = yellow>string&amp; append(const string&amp; str)</font> 字符串后面追加一个字符串</li>
-<li><font color = yellow>void pop_back()</font> 弹出最后一个字符</li>
-<li><font color = yellow>string&amp; operator+&#x3D;(const string&amp; str)</font> 字符串拼接</li>
-<li><font color = yellow>string&amp; insert(size_t pos, const string&amp; str)</font> 在pos位置插入字符串</li>
-<li><font color = yellow>string&amp; assign(const string&amp; str)</font> 将字符串重新赋值为str</li>
-<li><font color = yellow>string&amp; erase(size_t pos&#x3D;0, size_t len&#x3D;npos)</font> 从pos开始删除len个字符</li>
-<li><font color = yellow>void swap(string&amp; str)</font> 交换两个字符串</li>
-</ul>
+<li><p>回溯算法理解后就比较简单了，但很多问题比较难的点在于如何剪枝。因为回溯本身是一种穷举，因此很容易发生超时等问题。剪枝优化是重点。</p>
 </li>
-<li>其他操作<ul>
-<li><font color = yellow>const char* c_str()</font> 获取等效的const char* 字符串</li>
-<li><font color = yellow>string substr(size_t pos&#x3D;0, size_t len&#x3D;npos)</font> 从pos开始截取len个字符的子串</li>
-<li><font color = yellow>size_t find(const string&amp; str, size_t pos&#x3D;0)</font> 从pos开始查找str子串第一次出现的位置</li>
+<li><p>和树的按层次遍历一样，回溯大多有固定模板，如果忘记了，可以回顾一下模板来使自己迅速进入笔试状态。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">backtrace</span><span class="hljs-params">(...)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(中止条件)&#123;<br>        存放结果；<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(选择元素)&#123;<br>        更新状态；<br>        <span class="hljs-built_in">backtrace</span>();<br>        恢复状态；<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ul>
-</li>
-</ol>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>-上述方法中，凡是涉及到参数const string&amp; str的方法，基本上都有另外一种const char* 参数和迭代器参数的重载，例如：  </p>
-<p><font color = yellow>string&amp; assign(const string&amp; str)</font><br><font color = yellow>string&amp; assign(const char* s)</font><br><font color = yellow>string&amp; assign(iterator first, iterator last)</font></p>
 
                 
               </div>
@@ -350,7 +319,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/C/" class="category-chain-item">C++</a>
+  <a href="/categories/leetcode/" class="category-chain-item">leetcode</a>
   
   
 
@@ -365,9 +334,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/STL/" class="print-no-link">#STL</a>
-      
-        <a href="/tags/string/" class="print-no-link">#string</a>
+        <a href="/tags/%E5%9B%9E%E6%BA%AF/" class="print-no-link">#回溯</a>
       
     </div>
   
@@ -379,8 +346,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[STL]String</div>
-      <div>http://example.com/2025/01/07/STL-String/</div>
+      <div>[刷题]全排列</div>
+      <div>http://example.com/2025/02/09/全排列/</div>
     </div>
     <div class="license-meta">
       
@@ -392,7 +359,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月7日</div>
+          <div>2025年2月9日</div>
         </div>
       
       
@@ -424,18 +391,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/01/09/Gtest/" title="Gtest">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Gtest</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/05/Cmake/" title="Cmake">
-                        <span class="hidden-mobile">Cmake</span>
+                      <a href="/2025/01/13/%E6%B6%88%E7%81%AD%E6%80%AA%E7%89%A9%E6%9C%80%E5%A4%A7%E6%95%B0%E9%87%8F/" title="[刷题]消灭怪物最大数量">
+                        <span class="hidden-mobile">[刷题]消灭怪物最大数量</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
