@@ -19,22 +19,22 @@
   <meta name="author" content="WONE">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目描述你正在玩一款电子游戏，在游戏中你需要保护城市免受怪物侵袭。给定一个 下标从 0 开始 且大小为 n 的整数数组 dist ，其中 dist[i] 是第 i 个怪物与城市的 初始距离（单位：千米）。 怪物以 恒定 的速度走向城市。每个怪物的速度都以一个长度为 n 的整数数组 speed 表示，其中 speed[i] 是第 i 个怪物的速度（单位：千米&#x2F;分）。 你有一种武器，一旦充满">
+    <meta name="description" content="题目描述你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。 给定一个代表每个房屋存放金额的非负整数数组，计算你 不触动警报装置的情况下 ，一夜之内能够偷窃到的最高金额。 示例输入：[2,7,9,3,1]输出：12解释：偷窃 1 号房屋 (金额 &#x3D; 2),">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[刷题]消灭怪物最大数量">
-<meta property="og:url" content="http://example.com/2025/01/13/%E6%B6%88%E7%81%AD%E6%80%AA%E7%89%A9%E6%9C%80%E5%A4%A7%E6%95%B0%E9%87%8F/index.html">
+<meta property="og:title" content="[刷题]打家劫舍">
+<meta property="og:url" content="http://example.com/2025/02/25/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题目描述你正在玩一款电子游戏，在游戏中你需要保护城市免受怪物侵袭。给定一个 下标从 0 开始 且大小为 n 的整数数组 dist ，其中 dist[i] 是第 i 个怪物与城市的 初始距离（单位：千米）。 怪物以 恒定 的速度走向城市。每个怪物的速度都以一个长度为 n 的整数数组 speed 表示，其中 speed[i] 是第 i 个怪物的速度（单位：千米&#x2F;分）。 你有一种武器，一旦充满">
+<meta property="og:description" content="题目描述你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。 给定一个代表每个房屋存放金额的非负整数数组，计算你 不触动警报装置的情况下 ，一夜之内能够偷窃到的最高金额。 示例输入：[2,7,9,3,1]输出：12解释：偷窃 1 号房屋 (金额 &#x3D; 2),">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-13T15:56:22.000Z">
-<meta property="article:modified_time" content="2025-02-25T14:09:51.928Z">
+<meta property="article:published_time" content="2025-02-25T14:08:20.000Z">
+<meta property="article:modified_time" content="2025-02-25T14:52:02.422Z">
 <meta property="article:author" content="WONE">
-<meta property="article:tag" content="贪心">
+<meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>[刷题]消灭怪物最大数量 - Hexo</title>
+  <title>[刷题]打家劫舍 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[刷题]消灭怪物最大数量"></span>
+            <span id="subtitle" data-typed-text="[刷题]打家劫舍"></span>
           
         </div>
 
@@ -211,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-13 23:56" pubdate>
-          2025年1月13日 晚上
+        <time datetime="2025-02-25 22:08" pubdate>
+          2025年2月25日 晚上
         </time>
       </span>
     
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          882 字
+          767 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          8 分钟
+          7 分钟
         
       </span>
     
@@ -271,26 +271,27 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[刷题]消灭怪物最大数量</h1>
+            <h1 id="seo-header">[刷题]打家劫舍</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>你正在玩一款电子游戏，在游戏中你需要保护城市免受怪物侵袭。给定一个 下标从 0 开始 且大小为 n 的整数数组 dist ，其中 dist[i] 是第 i 个怪物与城市的 初始距离（单位：千米）。</p>
-<p>怪物以 恒定 的速度走向城市。每个怪物的速度都以一个长度为 n 的整数数组 speed 表示，其中 speed[i] 是第 i 个怪物的速度（单位：千米&#x2F;分）。</p>
-<p>你有一种武器，一旦充满电，就可以消灭 一个 怪物。但是，武器需要 一分钟 才能充电。武器在游戏开始时是充满电的状态，怪物从 第 0 分钟 时开始移动。</p>
-<p>一旦任一怪物到达城市，你就输掉了这场游戏。如果某个怪物 恰好 在某一分钟开始时到达城市（距离表示为0），这也会被视为 输掉 游戏，在你可以使用武器之前，游戏就会结束。</p>
-<p>返回在你输掉游戏前可以消灭的怪物的 最大 数量。如果你可以在所有怪物到达城市前将它们全部消灭，返回  n 。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>输入：dist &#x3D; [1,3,4], speed &#x3D; [1,1,1]<br>输出：3<br>解释：<br>第 0 分钟开始时，怪物的距离是 [1,3,4]，你消灭了第一个怪物。<br>第 1 分钟开始时，怪物的距离是 [X,2,3]，你消灭了第二个怪物。<br>第 3 分钟开始时，怪物的距离是 [X,X,2]，你消灭了第三个怪物。<br>所有 3 个怪物都可以被消灭。</p>
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><ul>
-<li>因为计算消灭数量的关键是时间，因此首先想到从两个输入数组计算出怪兽到达城市的时间，用一个数组来存储。  </li>
-<li>为了能消灭最多的怪兽，我们最好的办法是每次消灭到达城市时间最少的怪兽(贪心思想)，因此可以将时间数组升序排序，然后按照索引号依次消灭即可。  </li>
-<li>观察时间数组可以发现规律：只有当数组索引小于对应的数组元素时，该怪兽才能被成功消灭，一旦数组索引大于等于数组元素值，则代表按照索引依次消灭的方法下，该怪兽一定会到达城市。<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">eg:<br>    [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>] 该时间数组条件下，可依次消灭所有怪兽<br>    [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>] 此时在中间插入一个时间为<span class="hljs-number">2</span>的怪兽，推理可知索引号为<span class="hljs-number">2</span>的怪兽一定来不及消灭，此时的特点是索引号<span class="hljs-number">2</span>等于了元素值<span class="hljs-number">2</span>。<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">eliminateMaximum</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; dist, vector&lt;<span class="hljs-type">int</span>&gt;&amp; speed)</span> </span>&#123;<br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">time</span><span class="hljs-params">(dist.size(),<span class="hljs-number">0</span>)</span></span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;dist.<span class="hljs-built_in">size</span>();i++)&#123;<br>            <span class="hljs-type">int</span> tmp = <span class="hljs-built_in">ceil</span>(<span class="hljs-built_in">float</span>(dist[i])/<span class="hljs-built_in">float</span>(speed[i]));<br>            time[i] = tmp;<br>        &#125;<br><br>        <span class="hljs-built_in">sort</span>(time.<span class="hljs-built_in">begin</span>(), time.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;time.<span class="hljs-built_in">size</span>();j++)&#123;<br>            <span class="hljs-keyword">if</span>(j &gt;= time[j])&#123;<br>                <span class="hljs-keyword">return</span> j;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> time.<span class="hljs-built_in">size</span>();<br>    &#125;<br></code></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>一个问题：时间数组的计算需要向上取整，ceil( )函数可以做到这一点，但是编写代码时是直接使用了ceil对dist&#x2F;speed的结果取整，由于int类型除法的结果本身就会向下取整，这个时候再使用ceil就毫无作用了，因此改进成了先将两个数组强转为float类型以避免向下取整，再使用ceil就可以获取正确结果。</li>
-<li>如果不使用ceil：(dist[i] - 1) &#x2F; speed[i] + 1</li>
+                <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。</p>
+<p>给定一个代表每个房屋存放金额的非负整数数组，计算你 不触动警报装置的情况下 ，一夜之内能够偷窃到的最高金额。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>输入：[2,7,9,3,1]<br>输出：12<br>解释：偷窃 1 号房屋 (金额 &#x3D; 2), 偷窃 3 号房屋 (金额 &#x3D; 9)，接着偷窃 5 号房屋 (金额 &#x3D; 1)。偷窃到的最高金额 &#x3D; 2 + 9 + 1 &#x3D; 12 。</p>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>分析题意可以看出在选定一个房屋后，后续还有非常多的房屋选择，属于一个多段决策问题，求最值，可以优先尝试使用动态规划来解题。问题的关键在于如何递推。  </p>
+<p>最开始我将dp[n]解释为，n个房屋可以偷得的最高金额，看似合情合理，但是代入递推后发现一个关键问题：当n&#x3D;1说明只有一个房屋，但是这个房屋我该在房屋数组中选哪个来当这个唯一？n&#x3D;2时又该选哪两个？  </p>
+<p>显然，为了递推公式能够成立，在我们给n具体赋值时，房屋就应该已经被选好，否则一次赋值就更换几个房屋，递推公式怎么定性？所以，dp[n]的含义应该变为前n个房屋中可以偷盗的最大金额。  </p>
+<p>开始递推：  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp">dp[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>                                   <span class="hljs-comment">//因为没有房屋  </span><br>dp[<span class="hljs-number">1</span>] = num[<span class="hljs-number">0</span>]                              <span class="hljs-comment">//只有一间房屋  </span><br>dp[<span class="hljs-number">2</span>] = <span class="hljs-built_in">max</span>(num[<span class="hljs-number">0</span>],num[<span class="hljs-number">1</span>])                  <span class="hljs-comment">//两间屋子就选钱最多的</span><br>dp[<span class="hljs-number">3</span>] = <span class="hljs-built_in">max</span>(dp[<span class="hljs-number">1</span>]+num[<span class="hljs-number">2</span>], dp[<span class="hljs-number">2</span>])            <br><span class="hljs-comment">//第三间房子不能和前面偷过的房子相邻，dp[2]选中的房子可能和num[2]相邻，但是dp[1]选中的房子一定和num[2]不相邻，而且如果没有偷过相邻的前一家的话，dp[1]和dp[2]其实是相等的。因此可以将num[2]加到dp[1]上。这个结论递推到整个数组可以得到：</span><br>...<br>dp[n] = <span class="hljs-built_in">max</span>(dp[n<span class="hljs-number">-2</span>]+num[n<span class="hljs-number">-1</span>], dp[n<span class="hljs-number">-1</span>])      <span class="hljs-comment">//最终公式</span><br></code></pre></td></tr></table></figure>
+<p>因为dp[n]的含义是前n个房屋的最大金额，所以遍历顺序也就自然而然地是从前往后。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">rob</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>    <span class="hljs-type">int</span> len = nums.<span class="hljs-built_in">size</span>();<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">dp</span><span class="hljs-params">(len<span class="hljs-number">+1</span>,<span class="hljs-number">0</span>)</span></span>;<br>    dp[<span class="hljs-number">1</span>] = nums[<span class="hljs-number">0</span>];<br>    <span class="hljs-comment">//这里递推公式反推回去可以连dp[2]也优化为递推的一环：</span><br>    <span class="hljs-comment">//dp[2] = max(dp[0] + num[1], dp[1])</span><br>    <span class="hljs-comment">//因此遍历可以从i=2开始</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">2</span>;i&lt;=len;i++)&#123;<br>        dp[i] = <span class="hljs-built_in">max</span>(dp[i<span class="hljs-number">-2</span>]+nums[i<span class="hljs-number">-1</span>],dp[i<span class="hljs-number">-1</span>]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> dp[len];<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>递归四步：</p>
+<ul>
+<li>明确递推数组的及其索引号的含义</li>
+<li>推导递推公式</li>
+<li>如何初始化</li>
+<li>遍历顺序</li>
 </ul>
 
                 
@@ -325,7 +326,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%B4%AA%E5%BF%83/" class="print-no-link">#贪心</a>
+        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="print-no-link">#动态规划</a>
       
     </div>
   
@@ -337,8 +338,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[刷题]消灭怪物最大数量</div>
-      <div>http://example.com/2025/01/13/消灭怪物最大数量/</div>
+      <div>[刷题]打家劫舍</div>
+      <div>http://example.com/2025/02/25/打家劫舍/</div>
     </div>
     <div class="license-meta">
       
@@ -350,7 +351,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月13日</div>
+          <div>2025年2月25日</div>
         </div>
       
       
@@ -382,18 +383,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/09/%E5%85%A8%E6%8E%92%E5%88%97/" title="[刷题]全排列">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">[刷题]全排列</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/09/%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8%E4%B8%A4%E4%B8%89%E4%BA%8B/" title="[C++基础]右值引用相关">
-                        <span class="hidden-mobile">[C++基础]右值引用相关</span>
+                      <a href="/2025/02/10/%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/" title="[刷题]删除有序数组中的重复项">
+                        <span class="hidden-mobile">[刷题]删除有序数组中的重复项</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
