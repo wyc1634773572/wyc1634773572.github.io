@@ -27,7 +27,7 @@
 <meta property="og:description" content="constconst修饰分为：修饰指针，修饰参数，修饰成员函数  修饰指针这种情况一般要注意的是常量指针与指针常量：   常量指针，本质是个指针，指向一个常量：const int * a   ——–&gt;  const  (int *a)  修饰的是 *a 即a指针指向地址中的内容&#x2F;值不可变      指针常量，本质是个常量：int * const a   ——–&gt;  (int">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-19T14:23:09.000Z">
-<meta property="article:modified_time" content="2025-01-19T15:04:20.120Z">
+<meta property="article:modified_time" content="2025-03-25T14:12:04.162Z">
 <meta property="article:author" content="WONE">
 <meta property="article:tag" content="const">
 <meta property="article:tag" content="参数传递">
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          617 字
+          631 字
         
       </span>
     
@@ -293,7 +293,7 @@
 <ol start="2">
 <li><font size=3 color=yellow>修饰参数</font><br>const修饰参数，意指该函数不会改变该参数。</li>
 </ol>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(<span class="hljs-type">const</span> A&amp; a)</span></span>; <span class="hljs-comment">//const保护A类对象的成员不被改变，引用传递是为了避免拷贝，提高效率。</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">int</span> a)</span></span>; <span class="hljs-comment">//无意义，这里是值传递方式，无论使用const与否，形参本就无法改变实参</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(<span class="hljs-type">int</span> * <span class="hljs-type">const</span> a)</span></span>; <span class="hljs-comment">//传入指针常量，无法改变形参指向地址，但能修改所指内容，无法保护a的内容。</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">int</span> * a)</span></span>; <span class="hljs-comment">//可保护a的内容不被改变</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(<span class="hljs-type">const</span> A&amp; a)</span></span>; <span class="hljs-comment">//const保护A类对象的成员不被改变，引用传递是为了避免拷贝，提高效率。同时常量左值引用能够绑定右值。</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">int</span> a)</span></span>; <span class="hljs-comment">//无意义，这里是值传递方式，无论使用const与否，形参本就无法改变实参</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(<span class="hljs-type">int</span> * <span class="hljs-type">const</span> a)</span></span>; <span class="hljs-comment">//传入指针常量，无法改变形参指向地址，但能修改所指内容，无法保护a的内容。</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">fun</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">int</span> * a)</span></span>; <span class="hljs-comment">//可保护a的内容不被改变</span><br></code></pre></td></tr></table></figure>
 <p>这里简单提一下值传递、指针传递、以及引用传递的区别：  </p>
 <ul>
 <li>值传递为实参拷贝一个副本，即形参传递到函数中，任何对形参的修改都不会改变实参；  </li>

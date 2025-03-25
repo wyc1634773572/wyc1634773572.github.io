@@ -19,23 +19,25 @@
   <meta name="author" content="WONE">
   <meta name="keywords" content="">
   
-    <meta name="description" content="基本概念 map是关联容器,关联容器中的元素是通过题目的键引用的，而不是通过他们在容器中的绝对位置引用的。即使用键key来索引，值value才是真正存储的数据。    map容器存储的都是piar对象，也就是用pair类模板创建的键值对，使用map容器存储的键的值既不能重复也不能被修改，更确切地说map中所存储的其实是pair&lt;const K, V&gt;， 同时也会根据键的值对所有键值对进">
+    <meta name="description" content="基本概念vector是一种动态数组容器，它可以存储一组相同类型的元素，并可以动态调整大小。与数组类似，vector的元素在内存中连续，因此支持高效的随机访问O(1)。与数组的区别：1.容量动态改变。2.重载了&#x3D;运算符，因此可以通过vec &#x3D; vec1的方式来复制容器中的内容。普通数组无法整体复制。 构造 vector&lt;int&gt; vec; 构造一个空向量 * vect">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[STL]Map">
-<meta property="og:url" content="http://example.com/2025/01/04/STL-Map/index.html">
+<meta property="og:title" content="STL-Vector">
+<meta property="og:url" content="http://example.com/2025/03/17/STL-Vector/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="基本概念 map是关联容器,关联容器中的元素是通过题目的键引用的，而不是通过他们在容器中的绝对位置引用的。即使用键key来索引，值value才是真正存储的数据。    map容器存储的都是piar对象，也就是用pair类模板创建的键值对，使用map容器存储的键的值既不能重复也不能被修改，更确切地说map中所存储的其实是pair&lt;const K, V&gt;， 同时也会根据键的值对所有键值对进">
+<meta property="og:description" content="基本概念vector是一种动态数组容器，它可以存储一组相同类型的元素，并可以动态调整大小。与数组类似，vector的元素在内存中连续，因此支持高效的随机访问O(1)。与数组的区别：1.容量动态改变。2.重载了&#x3D;运算符，因此可以通过vec &#x3D; vec1的方式来复制容器中的内容。普通数组无法整体复制。 构造 vector&lt;int&gt; vec; 构造一个空向量 * vect">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-04T13:48:25.000Z">
-<meta property="article:modified_time" content="2025-03-17T15:50:24.457Z">
+<meta property="og:image" content="http://example.com/image/vector&deque.png">
+<meta property="article:published_time" content="2025-03-17T14:45:50.000Z">
+<meta property="article:modified_time" content="2025-03-18T15:35:41.481Z">
 <meta property="article:author" content="WONE">
 <meta property="article:tag" content="STL">
-<meta property="article:tag" content="map">
+<meta property="article:tag" content="vector">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/image/vector&deque.png">
   
   
   
-  <title>[STL]Map - Hexo</title>
+  <title>STL-Vector - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[STL]Map"></span>
+            <span id="subtitle" data-typed-text="STL-Vector"></span>
           
         </div>
 
@@ -212,8 +214,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-04 21:48" pubdate>
-          2025年1月4日 晚上
+        <time datetime="2025-03-17 22:45" pubdate>
+          2025年3月17日 晚上
         </time>
       </span>
     
@@ -224,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          883 字
+          748 字
         
       </span>
     
@@ -235,7 +237,7 @@
         
         
         
-          8 分钟
+          7 分钟
         
       </span>
     
@@ -272,84 +274,60 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[STL]Map</h1>
+            <h1 id="seo-header">STL-Vector</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ol>
-<li><p>map是关联容器,关联容器中的元素是通过题目的键引用的，而不是通过他们在容器中的绝对位置引用的。即<font color = yellow>使用键key来索引，值value才是真正存储的数据。</font>  </p>
+                <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>vector是一种动态数组容器，它可以存储一组相同类型的元素，并可以动态调整大小。与数组类似，vector的元素在内存中连续，因此支持高效的随机访问O(1)。<br>与数组的区别：<br>1.容量动态改变。<br>2.重载了&#x3D;运算符，因此可以通过vec &#x3D; vec1的方式来复制容器中的内容。普通数组无法整体复制。</p>
+<h2 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h2><ol>
+<li><font color = yellow>vector&lt;int&gt; vec;</font> 构造一个空向量 *</li>
+<li><font color = yellow>vector&lt;int&gt; vec &#x3D; {1,2,3,4,5};</font> 初始化器列表 *</li>
+<li><font color = yellow>vector&lt;int&gt; vec(vec1.begin(),vec1.end());</font></li>
+<li><font color = yellow>vector&lt;int&gt; vec(vec1);</font></li>
+<li><font color = yellow>vector&lt;int&gt; vec(10,0);</font> 构建10个0 *</li>
+<li><font color = yellow>vector&lt;int&gt; vec(arr, arr+5);</font> 通过数组初始化</li>
+<li><font color = yellow>vector&lt;int&gt; vec(std::move(vec1));</font> 移动构造</li>
+</ol>
+<h2 id="常用成员方法"><a href="#常用成员方法" class="headerlink" title="常用成员方法"></a>常用成员方法</h2><ol>
+<li>赋值操作<ul>
+<li><font color = yellow>void assign(count, val);</font> 将count个val赋值给该实例</li>
+<li><font color = yellow>void assign(v.begin(),v.end());</font> 迭代器范围赋值</li>
+</ul>
 </li>
-<li><p>map容器存储的都是piar对象，也就是用pair类模板创建的<font color = red>键值对</font>，使用map容器存储的键的值既不能重复也不能被修改，更确切地说map中所存储的其实是<font color = red>pair&lt;const K, V&gt;</font>， 同时也会根据键的值对所有键值对进行排序。  </p>
+<li>访问操作<ul>
+<li><font color = yellow>T&amp; at(pos);</font> 返回pos位置的元素引用,会做边界检查</li>
+<li><font color = yellow>T&amp; operator[ ](pos);</font> 返回指定位置的元素引用，不做边界检查 *</li>
+<li><font color = yellow>T&amp; front();</font> 返回第一个元素引用 *</li>
+<li><font color = yellow>T&amp; back();</font> 返回最后一个元素引用 *</li>
+<li><font color = yellow>T* data();</font> 返回底层数组指针</li>
+</ul>
 </li>
-<li><p>底层实现是红黑树。优点是可以根据key值快速找到value值。</p>
+<li>容量操作<ul>
+<li><font color = yellow>bool empty();</font> 检查容器是否为空 *</li>
+<li><font color = yellow>size_t size();</font> 返回容器中元素数量 *</li>
+<li><font color = yellow>size_t max_size();</font> 返回当前系统支持的最大元素数量</li>
+<li><font color = yellow>size_t capacity();</font> 返回当前容量</li>
+<li><font color = yellow>void reserve(new_cap);</font> 设置新容量new_cap</li>
+</ul>
+</li>
+<li>修改操作<ul>
+<li><font color = yellow>void clear();</font> 清除所有内容 *</li>
+<li><font color = yellow>void push_back(const T&amp; val);</font> 尾部添加元素val *</li>
+<li><font color = yellow>void push_back(T&amp;&amp; val);</font> 万能引用，支持移动右值</li>
+<li><font color = yellow>iterator emplace_back(T&amp;&amp; val);</font> 尾部添加，支持左右值，同时会调用元素的构造函数 *</li>
+<li><font color = yellow>void pop_back();</font> 移除末尾元素，end迭代器会失效 *</li>
+<li><font color = yellow>iterator erase(iterator it);</font> 删除it位置的元素，返回下一个元素迭代器</li>
+<li><font color = yellow>void swap(vector&amp; vec1);</font> 与vec1交换</li>
+</ul>
 </li>
 </ol>
-<h2 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h2><p>因为map中存储的是pair类型，所以应该先了解pair类型的构造方式：  </p>
-<ul>
-<li>pair&lt;T1,T2&gt; p(V1, V2);</li>
-<li>pair&lt;T1,T2&gt; p &#x3D; make_pair(V1, V2);</li>
-<li>访问内容：pair.first &amp; pair.second</li>
-</ul>
-<p>map容器模板定义：  </p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span>&lt; <span class="hljs-keyword">class</span> <span class="hljs-title class_">key</span>,                                        <span class="hljs-comment">//键类型</span><br>          <span class="hljs-keyword">class</span> <span class="hljs-title class_">value</span>,                                      <span class="hljs-comment">//值类型</span><br>          <span class="hljs-keyword">class</span> <span class="hljs-title class_">Compare</span> = less&lt;key&gt;,                        <span class="hljs-comment">//排序规则</span><br>          <span class="hljs-keyword">class</span> Alloc = allocator&lt;pair&lt;<span class="hljs-type">const</span> K, V&gt;&gt;         <span class="hljs-comment">//分配器类型</span><br>          &gt; <span class="hljs-keyword">class</span> map;<br></code></pre></td></tr></table></figure>
-
-<p>构造map的方式：  </p>
-<ol>
-<li><font color = yellow>map&lt;string, int&gt; mp;</font> 创建一个空map    </li>
-<li><font color = yellow>map&lt;string, int&gt; mp{ { “xxx”, 1 }, { “yyy”, 2 } };</font>    注意这里不是括号  </li>
-<li><font color = yellow>map&lt;string, int&gt; mp{ make_pair(“xxx”, 1), make_pair(“yyy”, 2) };</font></li>
-<li><font color = yellow>map&lt;string, int&gt; mp( mp1 );</font>  拷贝构造</li>
-<li><font color = yellow>map&lt;string, int&gt; mp( mp1.begin( ), mp1.end( ) );</font>  迭代器</li>
-</ol>
-<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><ul>
-<li><p><font color = yellow>at( key )</font>，获取key键对应的值，会进行下标检查，如果该键不存在，则抛出out_of_range异常</p>
-</li>
-<li><p><font color = yellow>count( key )</font>，统计键为key的元素个数</p>
-</li>
-<li><p><font color = yellow>size( )</font>，用于统计容器中元素个数</p>
-</li>
-<li><p><font color = yellow>empty( )</font>，判断容器是否为空</p>
-</li>
-<li><p><font color = yellow>begin( )</font>，获取容器中第一个键值对的迭代器</p>
-</li>
-<li><p><font color = yellow>end( )</font>，获取容器中最后一个键值对后一位的迭代器</p>
-</li>
-<li><p>增</p>
-<ul>
-<li><p><font color = yellow>pair&lt; iterator, bool &gt; insert( pair&lt;K, V&gt; )</font>，插入一个键值对，注意返回值是一个键值对<br>插入成功时，返回值的first指向插入成功的位置，second值为true<br>插入失败时，返回值的first指向已存在的键值对位置，second值为false<br>ps:插入函数可以指定插入位置，但之后容器会重新再排序。  </p>
-</li>
-<li><p><font color = yellow>pair&lt; iterator, bool &gt; emplace(Args&amp;&amp;… args)</font>，该函数会自动调用pair的构造函数，因此参数只需要传入pair所需的数据即可。该方法比insert效率更高，使用也更简单，因此应该尽量使用。</p>
-</li>
-<li><p><font color = yellow>[ ]</font>，当使用map[key]来访问key的键值对时，不会做下标检查，如果没有该键的键值对，则会自动增加该键的键值对到容器中。</p>
-</li>
-</ul>
-</li>
-<li><p>删</p>
-<ul>
-<li><font color = yellow>iterator erase( const iterator position )</font>，删除指定位置键值对，返回删除位置的下一个位置的迭代器。</li>
-<li><font color = yellow>iterator erase( const iterator first, const iterator last )</font>，删除指定范围键值对</li>
-<li><font color = yellow>size_type erase( cosnt key_type&amp; k )</font>，删除指定键的所有键值对</li>
-<li><font color = yellow>void clear( )</font>， 删除所有元素</li>
-</ul>
-</li>
-<li><p>改</p>
-<ul>
-<li><font color = yellow>mp.at( key ) &#x3D; new_val;</font></li>
-<li><font color = yellow>mp[ key ] &#x3D; new_val;</font></li>
-</ul>
-</li>
-<li><p>查</p>
-<ul>
-<li><font color = yellow>itetator find( key )</font>，在容器中查找键值为key的键值对，若找到，返回指向该位置的迭代器，否则返回end( )位置迭代器。  </li>
-<li><font color = yellow>lower_bound( key )</font>，返回第一个大于或等于key的键值对迭代器</li>
-<li><font color = yellow>upper_bound( key )</font>，返回第一个大于key的键值对迭代器</li>
-<li><font color = yellow>equal_range( key )</font>，返回一个pair对象，其中2个元素都是迭代器，first到second所表示的范围内都是键为key的键值对</li>
-</ul>
-</li>
-</ul>
-<h2 id="三种map"><a href="#三种map" class="headerlink" title="三种map"></a>三种map</h2><p>map (红黑树)：有序，键不能重复<br>multimap (红黑树)：有序，键能重复<br>unordered_map (哈希表)：无序，键不能重复  </p>
-<p>插入、删除、查找时间复杂度：<br>map&#x2F;multimap O(log n)<br>unordered_map O( 1 )  </p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>常见时间复杂度：<br>随机访问—-O(1)<br>尾部插入—-O(1)<br>其他插入—-O(n)  </p>
+<p>容量更新：<br>当元素数量超过当前容量时，默认情况vector会直接提升一倍容量。这种容量的提升是抛弃了原来所处的内存区域，整体复制到一块新的内存中。因此之前记录的所有迭代器均会失效。</p>
+<p>迭代器失效：<br>每当容量更新时，所有迭代器均失效。<br>push_back或者emplace_back时，只要容量不变化就只有end()失效<br>insert时，只要容量不变化就只有插入点and之后位置失效(包括end)  </p>
+<h2 id="vector与deque"><a href="#vector与deque" class="headerlink" title="vector与deque"></a>vector与deque</h2><p>deque是一个双端队列因为它的大部分操作与vector相同，因此放到这里一起对比学习。<br><img src="/image/vector&deque.png" srcset="/img/loading.gif" lazyload alt="底层区别">   </p>
+<p>deque支持头部操作：<br>push_front()以及pop_front()  &#x2F;&#x2F;这两个操作vector不具备<br>deque不支持内存相关方法：<br>capacity()以及reserve()  &#x2F;&#x2F;因为它的底层不是内存连续的  </p>
+<p>一般来说，如果需要频繁在头尾进行插入删除操作才会选择deque</p>
 
                 
               </div>
@@ -385,7 +363,7 @@
       
         <a href="/tags/STL/" class="print-no-link">#STL</a>
       
-        <a href="/tags/map/" class="print-no-link">#map</a>
+        <a href="/tags/vector/" class="print-no-link">#vector</a>
       
     </div>
   
@@ -397,8 +375,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[STL]Map</div>
-      <div>http://example.com/2025/01/04/STL-Map/</div>
+      <div>STL-Vector</div>
+      <div>http://example.com/2025/03/17/STL-Vector/</div>
     </div>
     <div class="license-meta">
       
@@ -410,7 +388,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月4日</div>
+          <div>2025年3月17日</div>
         </div>
       
       
@@ -442,18 +420,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/01/05/Cmake/" title="Cmake">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Cmake</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/02/%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" title="[刷题]无重复字符的最长子串">
-                        <span class="hidden-mobile">[刷题]无重复字符的最长子串</span>
+                      <a href="/2025/03/16/gdb/" title="gdb">
+                        <span class="hidden-mobile">gdb</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

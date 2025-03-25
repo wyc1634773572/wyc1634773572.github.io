@@ -19,23 +19,21 @@
   <meta name="author" content="WONE">
   <meta name="keywords" content="">
   
-    <meta name="description" content="基本概念 map是关联容器,关联容器中的元素是通过题目的键引用的，而不是通过他们在容器中的绝对位置引用的。即使用键key来索引，值value才是真正存储的数据。    map容器存储的都是piar对象，也就是用pair类模板创建的键值对，使用map容器存储的键的值既不能重复也不能被修改，更确切地说map中所存储的其实是pair&lt;const K, V&gt;， 同时也会根据键的值对所有键值对进">
+    <meta name="description" content="什么是GDBgdb(GUN Debuger) 一种程序调试器 用于解决什么问题工作中可用于debug，学习中用于观察代码流程 快速使用编译：在gcc&#x2F;g++编译过程中加上-g选项，开启调试信息。调试：gdb + 可执行程序调试命令：    r  &nbsp;&nbsp;开始执行 b [func&#x2F;line]  &nbsp;&nbsp;  打断点 info b &nbsp;&amp;nbs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[STL]Map">
-<meta property="og:url" content="http://example.com/2025/01/04/STL-Map/index.html">
+<meta property="og:title" content="gdb">
+<meta property="og:url" content="http://example.com/2025/03/16/gdb/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="基本概念 map是关联容器,关联容器中的元素是通过题目的键引用的，而不是通过他们在容器中的绝对位置引用的。即使用键key来索引，值value才是真正存储的数据。    map容器存储的都是piar对象，也就是用pair类模板创建的键值对，使用map容器存储的键的值既不能重复也不能被修改，更确切地说map中所存储的其实是pair&lt;const K, V&gt;， 同时也会根据键的值对所有键值对进">
+<meta property="og:description" content="什么是GDBgdb(GUN Debuger) 一种程序调试器 用于解决什么问题工作中可用于debug，学习中用于观察代码流程 快速使用编译：在gcc&#x2F;g++编译过程中加上-g选项，开启调试信息。调试：gdb + 可执行程序调试命令：    r  &nbsp;&nbsp;开始执行 b [func&#x2F;line]  &nbsp;&nbsp;  打断点 info b &nbsp;&amp;nbs">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-04T13:48:25.000Z">
-<meta property="article:modified_time" content="2025-03-17T15:50:24.457Z">
+<meta property="article:published_time" content="2025-03-16T08:40:27.000Z">
+<meta property="article:modified_time" content="2025-03-16T08:58:17.486Z">
 <meta property="article:author" content="WONE">
-<meta property="article:tag" content="STL">
-<meta property="article:tag" content="map">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>[STL]Map - Hexo</title>
+  <title>gdb - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[STL]Map"></span>
+            <span id="subtitle" data-typed-text="gdb"></span>
           
         </div>
 
@@ -212,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-04 21:48" pubdate>
-          2025年1月4日 晚上
+        <time datetime="2025-03-16 16:40" pubdate>
+          2025年3月16日 下午
         </time>
       </span>
     
@@ -224,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          883 字
+          288 字
         
       </span>
     
@@ -235,7 +233,7 @@
         
         
         
-          8 分钟
+          3 分钟
         
       </span>
     
@@ -272,84 +270,26 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[STL]Map</h1>
+            <h1 id="seo-header">gdb</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ol>
-<li><p>map是关联容器,关联容器中的元素是通过题目的键引用的，而不是通过他们在容器中的绝对位置引用的。即<font color = yellow>使用键key来索引，值value才是真正存储的数据。</font>  </p>
-</li>
-<li><p>map容器存储的都是piar对象，也就是用pair类模板创建的<font color = red>键值对</font>，使用map容器存储的键的值既不能重复也不能被修改，更确切地说map中所存储的其实是<font color = red>pair&lt;const K, V&gt;</font>， 同时也会根据键的值对所有键值对进行排序。  </p>
-</li>
-<li><p>底层实现是红黑树。优点是可以根据key值快速找到value值。</p>
-</li>
-</ol>
-<h2 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h2><p>因为map中存储的是pair类型，所以应该先了解pair类型的构造方式：  </p>
+                <h2 id="什么是GDB"><a href="#什么是GDB" class="headerlink" title="什么是GDB"></a>什么是GDB</h2><p>gdb(GUN Debuger) 一种程序调试器</p>
+<h2 id="用于解决什么问题"><a href="#用于解决什么问题" class="headerlink" title="用于解决什么问题"></a>用于解决什么问题</h2><p>工作中可用于debug，学习中用于观察代码流程</p>
+<h2 id="快速使用"><a href="#快速使用" class="headerlink" title="快速使用"></a>快速使用</h2><p>编译：在gcc&#x2F;g++编译过程中加上-g选项，开启调试信息。<br>调试：gdb + 可执行程序<br>调试命令：  </p>
 <ul>
-<li>pair&lt;T1,T2&gt; p(V1, V2);</li>
-<li>pair&lt;T1,T2&gt; p &#x3D; make_pair(V1, V2);</li>
-<li>访问内容：pair.first &amp; pair.second</li>
+<li>r  &nbsp;&nbsp;开始执行</li>
+<li>b [func&#x2F;line]  &nbsp;&nbsp;  打断点</li>
+<li>info b &nbsp;&nbsp;断点信息</li>
+<li>n &nbsp;&nbsp;步进</li>
+<li>s &nbsp;&nbsp;步入</li>
+<li>p &nbsp;&nbsp;打印信息，例如变量值，数组，结构等</li>
+<li>list &nbsp;查看源码</li>
+<li>watch [变量地址]  &nbsp;变量改变时，打印出新旧变量的值</li>
+<li>q &nbsp;&nbsp;退出gdb</li>
 </ul>
-<p>map容器模板定义：  </p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">template</span>&lt; <span class="hljs-keyword">class</span> <span class="hljs-title class_">key</span>,                                        <span class="hljs-comment">//键类型</span><br>          <span class="hljs-keyword">class</span> <span class="hljs-title class_">value</span>,                                      <span class="hljs-comment">//值类型</span><br>          <span class="hljs-keyword">class</span> <span class="hljs-title class_">Compare</span> = less&lt;key&gt;,                        <span class="hljs-comment">//排序规则</span><br>          <span class="hljs-keyword">class</span> Alloc = allocator&lt;pair&lt;<span class="hljs-type">const</span> K, V&gt;&gt;         <span class="hljs-comment">//分配器类型</span><br>          &gt; <span class="hljs-keyword">class</span> map;<br></code></pre></td></tr></table></figure>
-
-<p>构造map的方式：  </p>
-<ol>
-<li><font color = yellow>map&lt;string, int&gt; mp;</font> 创建一个空map    </li>
-<li><font color = yellow>map&lt;string, int&gt; mp{ { “xxx”, 1 }, { “yyy”, 2 } };</font>    注意这里不是括号  </li>
-<li><font color = yellow>map&lt;string, int&gt; mp{ make_pair(“xxx”, 1), make_pair(“yyy”, 2) };</font></li>
-<li><font color = yellow>map&lt;string, int&gt; mp( mp1 );</font>  拷贝构造</li>
-<li><font color = yellow>map&lt;string, int&gt; mp( mp1.begin( ), mp1.end( ) );</font>  迭代器</li>
-</ol>
-<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><ul>
-<li><p><font color = yellow>at( key )</font>，获取key键对应的值，会进行下标检查，如果该键不存在，则抛出out_of_range异常</p>
-</li>
-<li><p><font color = yellow>count( key )</font>，统计键为key的元素个数</p>
-</li>
-<li><p><font color = yellow>size( )</font>，用于统计容器中元素个数</p>
-</li>
-<li><p><font color = yellow>empty( )</font>，判断容器是否为空</p>
-</li>
-<li><p><font color = yellow>begin( )</font>，获取容器中第一个键值对的迭代器</p>
-</li>
-<li><p><font color = yellow>end( )</font>，获取容器中最后一个键值对后一位的迭代器</p>
-</li>
-<li><p>增</p>
-<ul>
-<li><p><font color = yellow>pair&lt; iterator, bool &gt; insert( pair&lt;K, V&gt; )</font>，插入一个键值对，注意返回值是一个键值对<br>插入成功时，返回值的first指向插入成功的位置，second值为true<br>插入失败时，返回值的first指向已存在的键值对位置，second值为false<br>ps:插入函数可以指定插入位置，但之后容器会重新再排序。  </p>
-</li>
-<li><p><font color = yellow>pair&lt; iterator, bool &gt; emplace(Args&amp;&amp;… args)</font>，该函数会自动调用pair的构造函数，因此参数只需要传入pair所需的数据即可。该方法比insert效率更高，使用也更简单，因此应该尽量使用。</p>
-</li>
-<li><p><font color = yellow>[ ]</font>，当使用map[key]来访问key的键值对时，不会做下标检查，如果没有该键的键值对，则会自动增加该键的键值对到容器中。</p>
-</li>
-</ul>
-</li>
-<li><p>删</p>
-<ul>
-<li><font color = yellow>iterator erase( const iterator position )</font>，删除指定位置键值对，返回删除位置的下一个位置的迭代器。</li>
-<li><font color = yellow>iterator erase( const iterator first, const iterator last )</font>，删除指定范围键值对</li>
-<li><font color = yellow>size_type erase( cosnt key_type&amp; k )</font>，删除指定键的所有键值对</li>
-<li><font color = yellow>void clear( )</font>， 删除所有元素</li>
-</ul>
-</li>
-<li><p>改</p>
-<ul>
-<li><font color = yellow>mp.at( key ) &#x3D; new_val;</font></li>
-<li><font color = yellow>mp[ key ] &#x3D; new_val;</font></li>
-</ul>
-</li>
-<li><p>查</p>
-<ul>
-<li><font color = yellow>itetator find( key )</font>，在容器中查找键值为key的键值对，若找到，返回指向该位置的迭代器，否则返回end( )位置迭代器。  </li>
-<li><font color = yellow>lower_bound( key )</font>，返回第一个大于或等于key的键值对迭代器</li>
-<li><font color = yellow>upper_bound( key )</font>，返回第一个大于key的键值对迭代器</li>
-<li><font color = yellow>equal_range( key )</font>，返回一个pair对象，其中2个元素都是迭代器，first到second所表示的范围内都是键为key的键值对</li>
-</ul>
-</li>
-</ul>
-<h2 id="三种map"><a href="#三种map" class="headerlink" title="三种map"></a>三种map</h2><p>map (红黑树)：有序，键不能重复<br>multimap (红黑树)：有序，键能重复<br>unordered_map (哈希表)：无序，键不能重复  </p>
-<p>插入、删除、查找时间复杂度：<br>map&#x2F;multimap O(log n)<br>unordered_map O( 1 )  </p>
+<h2 id="程序崩溃问题，core文件调试"><a href="#程序崩溃问题，core文件调试" class="headerlink" title="程序崩溃问题，core文件调试"></a>程序崩溃问题，core文件调试</h2><p>操作系统(Linux)默认不会生成core文件，必须先设置<br>ulimit -a 查看所有用户限制，比如可以打开的最大文件数等。<br>ulimit -c unlimited 修改core文件限制，使其生成不受限制<br>core文件默认生成到&#x3D;&#x3D;可执行文件运行命令的当前路径&#x3D;&#x3D;下，如果没有，查看&#x2F;proc&#x2F;sys&#x2F;kernel&#x2F;core_pattern文件，这里设置了其具体路径。gdb a.out core  即可开始调试</p>
 
                 
               </div>
@@ -368,7 +308,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/C/" class="category-chain-item">C++</a>
+  <a href="/categories/Tool/" class="category-chain-item">Tool</a>
   
   
 
@@ -380,15 +320,6 @@
     </div>
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/STL/" class="print-no-link">#STL</a>
-      
-        <a href="/tags/map/" class="print-no-link">#map</a>
-      
-    </div>
-  
 </div>
 
 
@@ -397,8 +328,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[STL]Map</div>
-      <div>http://example.com/2025/01/04/STL-Map/</div>
+      <div>gdb</div>
+      <div>http://example.com/2025/03/16/gdb/</div>
     </div>
     <div class="license-meta">
       
@@ -410,7 +341,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月4日</div>
+          <div>2025年3月16日</div>
         </div>
       
       
@@ -442,9 +373,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/01/05/Cmake/" title="Cmake">
+                      <a href="/2025/03/17/STL-Vector/" title="STL-Vector">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Cmake</span>
+                        <span class="hidden-mobile">STL-Vector</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -452,8 +383,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/02/%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" title="[刷题]无重复字符的最长子串">
-                        <span class="hidden-mobile">[刷题]无重复字符的最长子串</span>
+                      <a href="/2025/02/25/%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D/" title="[刷题]打家劫舍">
+                        <span class="hidden-mobile">[刷题]打家劫舍</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
